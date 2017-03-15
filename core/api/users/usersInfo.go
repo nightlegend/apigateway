@@ -2,7 +2,7 @@ package users
 
 import (
 	"container/list"
-	"docker-registry/core/utils/db"
+	"apigateway/core/utils/db"
 	"log"
 )
 

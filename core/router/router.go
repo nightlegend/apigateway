@@ -2,8 +2,8 @@ package router
 
 import (
 	"container/list"
-	"docker-registry/core/api/docker"
-	"docker-registry/core/api/users"
+	"apigateway/core/api/docker"
+	"apigateway/core/api/users"
 	"encoding/json"
 	"gopkg.in/gin-gonic/gin.v1"
 	"net/http"

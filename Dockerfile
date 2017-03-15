@@ -2,9 +2,9 @@ FROM golang:1.7
 
 MAINTAINER david.guo18@yahoo.com
 
-COPY ./ /go/src/magic/
+COPY ./ /go/src/apigateway/
 
-WORKDIR /go/src/magic/
+WORKDIR /go/src/apigateway/
 
 RUN go get && \
     go build

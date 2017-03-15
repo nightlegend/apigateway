@@ -1,7 +1,7 @@
 package main
 
 import (
-	"docker-registry/core/router"
+	"apigateway/core/router"
 )
 
 /*
