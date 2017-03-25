@@ -3,19 +3,37 @@ package db
 import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
+	"io/ioutil"
+	"kubernetes/Godeps/_workspace/src/github.com/ghodss/yaml"
 	"log"
+	"os"
 )
 
-const (
-	DB_HOST = "tcp(localhost:3306)"
-	DB_NAME = "magic"
-	DB_USER = /*"root"*/ "root"
-	DB_PASS = /*""*/ "123456"
-)
+type Configure struct {
+	Mysqldbhost     string `json:"mysqldbhost"`
+	Mysqldbport     string `json:"mysqldbport"`
+	Mysqldbname     string `json:"mysqldbname"`
+	Mysqldbusername string `json:"mysqldbusername"`
+	Mysqldbpassword string `json:"mysqldbpassword"`
+}
 
 func Connect() *sql.DB {
+	dir, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	configureFileData, err := ioutil.ReadFile(dir + "/conf/app.conf.yml")
+	if err != nil {
+		log.Fatal(err)
+	}
+	var configure Configure
+	err = yaml.Unmarshal([]byte(configureFileData), &configure)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	dsn := DB_USER + ":" + DB_PASS + "@" + DB_HOST + "/" + DB_NAME + "?charset=utf8"
+	dsn := configure.Mysqldbusername + ":" + configure.Mysqldbpassword + "@" + "tcp(" + configure.Mysqldbhost +
+		":" +configure.Mysqldbport + ")" + "/" + configure.Mysqldbname + "?charset=utf8"
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal(err)

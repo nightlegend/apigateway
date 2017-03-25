@@ -1,6 +1,13 @@
-#db connection
+#mongodb connection
+mongohost: 'localhost'
+mongoport: '27017'
 
-
+#mysqldb connection
+mysqldbhost: 'localhost'
+mysqldbport: '3306'
+mysqldbname: 'magic'
+mysqldbusername: 'root'
+mysqldbpassword: '123456'
 
 #redis connection
 

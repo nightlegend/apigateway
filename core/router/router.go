@@ -11,7 +11,7 @@ import (
 
 var secrets = gin.H{
 	"golang": gin.H{"email": "golang@golang.com", "phone": "123433"},
-	"admin":  gin.H{"email": "david.guo@cargosmart.com", "phone": "13798972142"},
+	"admin":  gin.H{"email": "david.guo@cargosmart.com", "phone": "13798972142","status":"successful"},
 }
 
 func Start() {
@@ -100,6 +100,11 @@ func Start() {
 		} else {
 			c.JSON(http.StatusOK, gin.H{"user": user, "secret": "NO SECRET :("})
 		}
+	})
+
+	router.GET("/", func(c *gin.Context) {
+		users.Mongotesting()
+		c.JSON(http.StatusOK, gin.H{"message":"welcome to apigateway, you can find you want here!!!"})
 	})
 
 	router.Run(":8012")
