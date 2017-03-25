@@ -9,6 +9,7 @@ Apigateway is build by golang and go-gin. we hope find a good solution privode y
 
 
 <h2>How to run?</h2>
+
 1. prepare
 
     <pre>
@@ -17,6 +18,7 @@ Apigateway is build by golang and go-gin. we hope find a good solution privode y
     </pre>
 
 2. startup
+
     <pre>
     cd workdir
     go get
