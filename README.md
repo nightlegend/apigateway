@@ -8,7 +8,7 @@ Apigateway is build by golang and go-gin. we hope find a good solution privode y
 <a href="https://gin-gonic.github.io/gin/">go-gin</a>: It`s a good framework for golang.
 
 
-###How to run?
+<h2>How to run?</h2>
 1. prepare
 
     <pre>
@@ -26,5 +26,5 @@ Apigateway is build by golang and go-gin. we hope find a good solution privode y
 
 If running normally, you can access<a href="http://localhost:8012">http://localhost:8012</a>
 
-## <small>Keep update to here for latest changed. Thanks for you love it.</small>
+<small>Keep update to here for latest changed. Thanks for you love it.</small>
 
