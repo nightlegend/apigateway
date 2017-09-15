@@ -3,7 +3,6 @@ package users
 import (
 	"apigateway/core/utils/db"
 	"container/list"
-	"fmt"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -51,7 +50,7 @@ func GetAllUser() list.List {
 	return *userList
 }
 
-func Mongotesting() {
+func Mongotesting() string {
 	session := db.Connectmon()
 	defer session.Close()
 
@@ -59,17 +58,17 @@ func Mongotesting() {
 	session.SetMode(mgo.Monotonic, true)
 
 	c := session.DB("test").C("people")
-	err := c.Insert(&Person{"Ale", "+55 53 8116 9639"},
-		&Person{"Cla", "+55 53 8402 8510"})
-	if err != nil {
-		log.Fatal(err)
-	}
+	// err := c.Insert(&Person{"Ale", "+55 53 8116 9639"},
+	// 	&Person{"Cla", "+55 53 8402 8510"})
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
 
 	result := Person{}
-	err = c.Find(bson.M{"name": "Ale"}).One(&result)
+	err := c.Find(bson.M{"name": "Ale"}).One(&result)
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Phone:", result.Phone)
-
+	log.Println("Phone:", result.Phone)
+	return result.Phone
 }

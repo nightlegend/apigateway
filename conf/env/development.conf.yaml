@@ -1,0 +1,8 @@
+#mongodb connection
+mongohost: 'localhost'
+mongoport: '27017'
+
+#mysqldb connection
+
+
+#redis connection

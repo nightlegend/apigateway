@@ -33,7 +33,7 @@ func Connect() *sql.DB {
 	}
 
 	dsn := configure.Mysqldbusername + ":" + configure.Mysqldbpassword + "@" + "tcp(" + configure.Mysqldbhost +
-		":" +configure.Mysqldbport + ")" + "/" + configure.Mysqldbname + "?charset=utf8"
+		":" + configure.Mysqldbport + ")" + "/" + configure.Mysqldbname + "?charset=utf8"
 	db, err := sql.Open("mysql", dsn)
 	if err != nil {
 		log.Fatal(err)
