@@ -50,7 +50,7 @@ func GetAllUser() list.List {
 	return *userList
 }
 
-func Mongotesting() string {
+func Mongotesting() *Person {
 	session := db.Connectmon()
 	defer session.Close()
 
@@ -69,6 +69,8 @@ func Mongotesting() string {
 	if err != nil {
 		log.Fatal(err)
 	}
+	log.Println(result)
 	log.Println("Phone:", result.Phone)
-	return result.Phone
+	// return result.Phone
+	return &result
 }
