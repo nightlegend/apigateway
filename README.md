@@ -8,19 +8,20 @@ Apigateway is build by golang and go-gin. we hope find a good solution privode y
 <a href="https://gin-gonic.github.io/gin/">go-gin</a>: It`s a good framework for golang.
 
 
-<h2>How to run?</h2>
+<h2>How to running?</h2>
 
-1. prepare
+1. Prepare
 
     <pre>
         start mongo db in your localhost, and update your mongodb info in /conf/app.conf.yml.
         You also can choise mysqldb.
     </pre>
 
-2. startup
+2. Startup
 
     <pre>
-    cd workdir
+    cd ${workdir}/apigateway
+    mkdir -p logs
     go get
     go build server.go
     go run server.go

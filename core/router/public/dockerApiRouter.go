@@ -2,8 +2,6 @@ package public
 
 import (
 	"apigateway/core/api/docker"
-	"apigateway/core/api/users"
-	"encoding/json"
 	"gopkg.in/gin-gonic/gin.v1"
 	"io/ioutil"
 	"log"
@@ -13,15 +11,7 @@ import (
 func PublicApiRouter(router gin.Engine) {
 	log.Println("start init public router.......")
 	router.GET("/", func(c *gin.Context) {
-		accountInfo := users.Mongotesting()
-		// cache.SaveLoginSession("david")
-		// etcd.SaveAction()
-		b, err := json.Marshal(accountInfo)
-		if err != nil {
-			log.Println(err)
-			return
-		}
-		c.JSON(http.StatusOK, gin.H{"message": "welcome to apigateway, you can find you want here!!!", "userInfo": string(b)})
+		c.JSON(http.StatusOK, gin.H{"message": "welcome to apigateway, you can find you want here!!!", "userInfo": "Hello World!!!"})
 	})
 
 	router.GET("/getImageTagInfo", func(c *gin.Context) {
