@@ -15,7 +15,7 @@ import (
  * * * 2. Start Socket
  */
 func main() {
-	/*
+	/*z
 	 * Init global logs file
 	 */
 	execDirAbsPath, _ := os.Getwd()
@@ -25,7 +25,7 @@ func main() {
 	}
 	//defer to close when you're done with it, not because you think it's idiomatic!
 	defer f.Close()
-	//set output of logs to f
+	//set output of logs to file
 	log.SetOutput(f)
 
 	/*

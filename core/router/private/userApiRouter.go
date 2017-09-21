@@ -8,12 +8,13 @@ import (
 	"container/list"
 	"encoding/json"
 	"gopkg.in/gin-gonic/gin.v1"
+	"log"
 	"net/http"
 )
 
 var secrets = gin.H{
 	"golang": gin.H{"email": "golang@golang.com", "phone": "123433"},
-	"admin":  gin.H{"email": "david.guo@cargosmart.com", "phone": "13798972142", "status": "successful"},
+	"admin":  gin.H{"email": "lose.start.david.guo@gmail.com", "phone": "13798972142", "status": "successful"},
 }
 
 func UserApiRouter(router gin.Engine) {
@@ -22,7 +23,7 @@ func UserApiRouter(router gin.Engine) {
 		"admin":  "Password1",
 	}))
 	// /admin/secrets endpoint
-	// hit "localhost:8080/admin/secrets
+	// hit "secrets
 	authorized.GET("/secrets", func(c *gin.Context) {
 		// get user, it was set by the BasicAuth middleware
 		user := c.MustGet(gin.AuthUserKey).(string)
@@ -99,7 +100,12 @@ func UserApiRouter(router gin.Engine) {
 		user := c.MustGet(gin.AuthUserKey).(string)
 		if secret, ok := secrets[user]; ok {
 			userList := users.GetAllUser()
-			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "secret": secret, "userList": userList})
+			userListByte, err := json.Marshal(userList)
+			if err != nil {
+				log.Println(err)
+				return
+			}
+			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "secret": secret, "userList": string(userListByte)})
 		} else {
 			c.JSON(http.StatusOK, gin.H{"user": user, "secret": "NO SECRET :("})
 		}

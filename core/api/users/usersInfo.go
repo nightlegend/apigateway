@@ -2,7 +2,6 @@ package users
 
 import (
 	"apigateway/core/utils/db"
-	"container/list"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"
@@ -31,23 +30,28 @@ type Person struct {
 	Phone string
 }
 
-func GetAllUser() list.List {
+type Users struct {
+	User []user
+}
+
+func GetAllUser() Users {
+	var users Users
 	dbcon := db.Connect()
 	rows, err := dbcon.Query("select * from magic.userinfo")
 	if err != nil {
 		log.Println(err)
 	}
-	userList := list.New()
 	for rows.Next() {
 		err := rows.Scan(&id, &name, &password, &email, &phoneNumber, &image)
 		if err != nil {
 			log.Fatal(err)
 		}
 		userInfo := user{id, name, password, email, phoneNumber, image}
-		userList.PushBack(userInfo)
-		log.Println(userInfo)
+		users.User = append(users.User, userInfo)
 	}
-	return *userList
+
+	// log.Println(users)
+	return users
 }
 
 func Mongotesting() *Person {
