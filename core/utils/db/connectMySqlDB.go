@@ -3,8 +3,8 @@ package db
 import (
 	"database/sql"
 	_ "github.com/go-sql-driver/mysql"
+	"gopkg.in/yaml.v2"
 	"io/ioutil"
-	"kubernetes/Godeps/_workspace/src/github.com/ghodss/yaml"
 	"log"
 	"os"
 )
