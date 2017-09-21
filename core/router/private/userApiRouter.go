@@ -17,13 +17,14 @@ var secrets = gin.H{
 	"admin":  gin.H{"email": "lose.start.david.guo@gmail.com", "phone": "13798972142", "status": "successful"},
 }
 
-func UserApiRouter(router gin.Engine) {
+func PrivateApiRouter(router gin.Engine) {
+	log.Println("start init private router.......")
+
 	authorized := router.Group("/admin", gin.BasicAuth(gin.Accounts{
 		"golang": "golang",
 		"admin":  "Password1",
 	}))
 	// /admin/secrets endpoint
-	// hit "secrets
 	authorized.GET("/secrets", func(c *gin.Context) {
 		// get user, it was set by the BasicAuth middleware
 		user := c.MustGet(gin.AuthUserKey).(string)
@@ -110,5 +111,5 @@ func UserApiRouter(router gin.Engine) {
 			c.JSON(http.StatusOK, gin.H{"user": user, "secret": "NO SECRET :("})
 		}
 	})
-
+	log.Println("complete init private router.......")
 }

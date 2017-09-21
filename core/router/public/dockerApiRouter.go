@@ -10,8 +10,8 @@ import (
 	"net/http"
 )
 
-func DockerRouter(router gin.Engine) {
-	log.Println("start init router.......")
+func PublicApiRouter(router gin.Engine) {
+	log.Println("start init public router.......")
 	router.GET("/", func(c *gin.Context) {
 		accountInfo := users.Mongotesting()
 		// cache.SaveLoginSession("david")
@@ -59,5 +59,5 @@ func DockerRouter(router gin.Engine) {
 			"nick":    nick,
 		})
 	})
-	log.Println("complete init router.......")
+	log.Println("complete init public router.......")
 }

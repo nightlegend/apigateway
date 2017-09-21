@@ -40,7 +40,7 @@ func Start() {
 	router := gin.New()
 	router.Use(CORSMiddleware())
 	router.Use(gin.Logger())
-	public.DockerRouter(*router)
-	private.UserApiRouter(*router)
+	public.PublicApiRouter(*router)
+	private.PrivateApiRouter(*router)
 	router.Run(":8012")
 }
