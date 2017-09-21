@@ -7,15 +7,6 @@ import (
 	"log"
 )
 
-var (
-	id          int
-	name        string
-	password    string
-	email       string
-	phoneNumber string
-	image       string
-)
-
 type user struct {
 	id          int
 	name        string
@@ -36,21 +27,19 @@ type Users struct {
 
 func GetAllUser() Users {
 	var users Users
+	var userEnity user
 	dbcon := db.Connect()
 	rows, err := dbcon.Query("select * from magic.userinfo")
 	if err != nil {
 		log.Println(err)
 	}
 	for rows.Next() {
-		err := rows.Scan(&id, &name, &password, &email, &phoneNumber, &image)
+		err := rows.Scan(&userEnity.id, &userEnity.name, &userEnity.password, &userEnity.email, &userEnity.phoneNumber, &userEnity.image)
 		if err != nil {
 			log.Fatal(err)
 		}
-		userInfo := user{id, name, password, email, phoneNumber, image}
-		users.User = append(users.User, userInfo)
+		users.User = append(users.User, userEnity)
 	}
-
-	// log.Println(users)
 	return users
 }
 

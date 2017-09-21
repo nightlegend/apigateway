@@ -15,7 +15,7 @@ import (
  * * * 2. Start Socket
  */
 func main() {
-	/*z
+	/*
 	 * Init global logs file
 	 */
 	execDirAbsPath, _ := os.Getwd()
