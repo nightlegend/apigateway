@@ -1,12 +1,14 @@
-# Api Gateway: api world, we neeed a good solution.
+# Api Gateway: Try a new way by golang
+![Gopher image](doc/golang.jpg)
 
-Apigateway is build by golang and go-gin. we hope find a good solution privode you.<br>
+It`s build by golang and go-gin. we hope privode a good solution to you.<br>
 
 
-<a href="https://golang.org/">golang</a>: Who use, who know.
+<a href="https://golang.org/">golang</a>
 
-<a href="https://gin-gonic.github.io/gin/">go-gin</a>: It`s a good framework for golang.
+<a href="https://gin-gonic.github.io/gin/">go-gin</a>
 
+<h1></h1>
 
 <h2>How to running?</h2>
 
