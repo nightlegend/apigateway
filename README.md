@@ -1,5 +1,4 @@
 # Api Gateway: Try a new way by golang
-![Gopher image](doc/golang.jpg)
 
 It`s build by golang and go-gin. we hope privode a good solution to you.<br>
 
@@ -9,7 +8,15 @@ It`s build by golang and go-gin. we hope privode a good solution to you.<br>
 
 <h1>Design</h1>
 
+<h2>Overview</h2>
 ![Gopher image](doc/structure.jpg)
+
+<pre>
+    Router: control all http request, and dispatch each requets to  api.
+    Api: Handle all request and provide a service to Router.
+    Worker: Define some task for handle request task.
+    Socket: Provide a socket server.
+</pre>
 
 <h2>How to running?</h2>
 
