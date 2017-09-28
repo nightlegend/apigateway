@@ -12,14 +12,14 @@ It`s build by golang and go-gin. we hope privode a good solution to you.<br>
 
 ![Gopher image](doc/structure.jpg)
 
-<pre>
-    Router: control all http request, and dispatch each requets to  api.
-    Api: Handle all request and provide a service to Router.
-    Worker: Define some task for handle request task.
-    Socket: Provide a socket server.
-</pre>
+<h2>Define</h2>
 
-<h2>How to running?</h2>
+Router: control all http request, and dispatch each requets to  api.
+Api: Handle all request and provide a service to Router.
+Worker: Define some task for handle request task.
+Socket: Provide a socket server.
+
+<h1>How to running?</h1>
 
 1. Prepare
 
