@@ -8,7 +8,8 @@ It`s build by golang and go-gin. we hope privode a good solution to you.<br>
 <a href="https://gin-gonic.github.io/gin/">go-gin</a>
 
 <h1>Design</h1>
-![Gopher image](doc/structure.png)
+
+![Gopher image](doc/structure.jpg)
 
 <h2>How to running?</h2>
 
