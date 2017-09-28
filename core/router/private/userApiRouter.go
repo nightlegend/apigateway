@@ -2,9 +2,6 @@ package private
 
 import (
 	"apigateway/core/api/docker"
-	// "apigateway/core/api/etcd"
-	"apigateway/core/api/users"
-	// "apigateway/core/cache"
 	"container/list"
 	"encoding/json"
 	"gopkg.in/gin-gonic/gin.v1"
@@ -91,22 +88,6 @@ func PrivateApiRouter(router gin.Engine) {
 		if secret, ok := secrets[user]; ok {
 			str := docker.GetImageTagInfo(c.Request.FormValue("imageName"), c.Request.FormValue("imageTag"))
 			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "secret": secret, "imageTagList": string(str)})
-		} else {
-			c.JSON(http.StatusOK, gin.H{"user": user, "secret": "NO SECRET :("})
-		}
-	})
-
-	authorized.GET("/getUserList", func(c *gin.Context) {
-		// get user, it was set by the BasicAuth middleware
-		user := c.MustGet(gin.AuthUserKey).(string)
-		if secret, ok := secrets[user]; ok {
-			userList := users.GetAllUser()
-			userListByte, err := json.Marshal(userList)
-			if err != nil {
-				log.Println(err)
-				return
-			}
-			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "secret": secret, "userList": string(userListByte)})
 		} else {
 			c.JSON(http.StatusOK, gin.H{"user": user, "secret": "NO SECRET :("})
 		}

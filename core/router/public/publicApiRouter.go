@@ -2,11 +2,17 @@ package public
 
 import (
 	"apigateway/core/api/docker"
+	"apigateway/core/api/users"
+	"apigateway/core/module"
 	"gopkg.in/gin-gonic/gin.v1"
-	"io/ioutil"
 	"log"
 	"net/http"
 )
+
+type LoginInfo struct {
+	USERNAME string `json:"userName" binding:"required"`
+	PASSWORD string `json:"password" binding:"required"`
+}
 
 func PublicApiRouter(router gin.Engine) {
 	log.Println("start init public router.......")
@@ -15,7 +21,6 @@ func PublicApiRouter(router gin.Engine) {
 	})
 
 	router.GET("/getImageTagInfo", func(c *gin.Context) {
-		log.Println(">>>>>>>" + c.DefaultQuery("imageTag", "test"))
 		imageName := c.DefaultQuery("imageType", "") + "/" + c.DefaultQuery("imageName", "")
 		imageTag := c.DefaultQuery("imageTag", "")
 		str := docker.GetImageTagInfo(imageName, imageTag)
@@ -30,24 +35,27 @@ func PublicApiRouter(router gin.Engine) {
 
 	})
 
-	router.POST("/form_post", func(c *gin.Context) {
-		log.Println(c.Request.Header)
-		log.Println(c.Request.Body)
-		htmlData, err := ioutil.ReadAll(c.Request.Body)
-		if err != nil {
-			log.Println(err)
-
+	router.POST("/register", func(c *gin.Context) {
+		var registerInfo module.UserInfo
+		c.BindJSON(&registerInfo)
+		result := users.Register(registerInfo)
+		if result {
+			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Welcome " + registerInfo.USERNAME + ",you have login sucessful!"})
+		} else {
+			c.JSON(http.StatusExpectationFailed, gin.H{"errorMessage": "Rigster failed "})
 		}
-		// print out
-		log.Println(string(htmlData)) //<-- here !
-		message := c.PostForm("message")
-		nick := c.DefaultPostForm("nick", "anonymous")
-		log.Println(">>>>>>>>>>>" + message)
-		c.JSON(200, gin.H{
-			"status":  "posted",
-			"message": message,
-			"nick":    nick,
-		})
 	})
+
+	router.POST("/login", func(c *gin.Context) {
+		var loginInfo LoginInfo
+		c.BindJSON(&loginInfo)
+		flag := users.Login(loginInfo.USERNAME, loginInfo.PASSWORD)
+		if flag {
+			c.JSON(http.StatusOK, gin.H{"code": 200, "Message": "Login Successful"})
+		} else {
+			c.JSON(http.StatusOK, gin.H{"code": 201, "Message": "Not found your account"})
+		}
+	})
+
 	log.Println("complete init public router.......")
 }
