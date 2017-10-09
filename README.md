@@ -1,6 +1,6 @@
 # Api Gateway: Try a new way by golang
 
-It`s build by golang and go-gin. we hope privode a good solution to you.<br>
+It`s build by golang and go-gin. Hope privode a good solution to you.<br>
 
 <a href="https://golang.org/">golang</a>
 
