@@ -9,7 +9,6 @@ import (
 )
 
 /*
- * Author: David Guo
  * Start Application
  * * * 1. Start RESTFUL
  * * * 2. Start Socket
