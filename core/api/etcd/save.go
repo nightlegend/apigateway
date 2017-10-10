@@ -1,7 +1,7 @@
 package etcd
 
 import (
-	"apigateway/core/utils/etcd"
+	"github.com/nightlegend/apigateway/core/utils/etcd"
 	"golang.org/x/net/context"
 	"log"
 )

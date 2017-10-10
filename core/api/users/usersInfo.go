@@ -1,8 +1,8 @@
 package users
 
 import (
-	"apigateway/core/module"
-	"apigateway/core/utils/db"
+	"github.com/nightlegend/apigateway/core/module"
+	"github.com/nightlegend/apigateway/core/utils/db"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 	"log"

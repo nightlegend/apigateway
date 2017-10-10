@@ -1,9 +1,9 @@
 package public
 
 import (
-	"apigateway/core/api/docker"
-	"apigateway/core/api/users"
-	"apigateway/core/module"
+	"github.com/nightlegend/apigateway/core/api/docker"
+	"github.com/nightlegend/apigateway/core/api/users"
+	"github.com/nightlegend/apigateway/core/module"
 	"gopkg.in/gin-gonic/gin.v1"
 	"log"
 	"net/http"

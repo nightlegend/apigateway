@@ -1,8 +1,8 @@
 package router
 
 import (
-	"apigateway/core/router/private"
-	"apigateway/core/router/public"
+	"github.com/nightlegend/apigateway/core/router/private"
+	"github.com/nightlegend/apigateway/core/router/public"
 	"gopkg.in/gin-gonic/gin.v1"
 	"log"
 )

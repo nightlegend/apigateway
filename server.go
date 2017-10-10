@@ -1,9 +1,9 @@
 package main
 
 import (
-	"apigateway/conf"
-	"apigateway/core/router"
-	"apigateway/core/socketio"
+	"github.com/nightlegend/apigateway/conf"
+	"github.com/nightlegend/apigateway/core/router"
+	"github.com/nightlegend/apigateway/core/socketio"
 	"log"
 	"os"
 )

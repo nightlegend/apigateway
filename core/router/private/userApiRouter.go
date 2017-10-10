@@ -1,9 +1,9 @@
 package private
 
 import (
-	"apigateway/core/api/docker"
 	"container/list"
 	"encoding/json"
+	"github.com/nightlegend/apigateway/core/api/docker"
 	"gopkg.in/gin-gonic/gin.v1"
 	"log"
 	"net/http"

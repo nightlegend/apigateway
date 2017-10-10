@@ -1,7 +1,7 @@
 package cache
 
 import (
-	"apigateway/core/utils/redis"
+	"github.com/nightlegend/apigateway/core/utils/redis"
 	"log"
 )
 
