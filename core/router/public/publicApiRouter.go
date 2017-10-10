@@ -4,6 +4,7 @@ import (
 	"github.com/nightlegend/apigateway/core/api/docker"
 	"github.com/nightlegend/apigateway/core/api/users"
 	"github.com/nightlegend/apigateway/core/module"
+	"github.com/nightlegend/apigateway/core/utils"
 	"gopkg.in/gin-gonic/gin.v1"
 	"log"
 	"net/http"
@@ -38,6 +39,8 @@ func PublicApiRouter(router gin.Engine) {
 	router.POST("/register", func(c *gin.Context) {
 		var registerInfo module.UserInfo
 		c.BindJSON(&registerInfo)
+		password := string(registerInfo.PASSWORD)
+		registerInfo.PASSWORD = string(utils.Crypted(password))
 		result := users.Register(registerInfo)
 		if result {
 			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Welcome " + registerInfo.USERNAME + ",you have login sucessful!"})
@@ -50,10 +53,14 @@ func PublicApiRouter(router gin.Engine) {
 		var loginInfo LoginInfo
 		c.BindJSON(&loginInfo)
 		flag := users.Login(loginInfo.USERNAME, loginInfo.PASSWORD)
-		if flag {
+		if flag == 200 {
 			c.JSON(http.StatusOK, gin.H{"code": 200, "Message": "Login Successful"})
-		} else {
-			c.JSON(http.StatusOK, gin.H{"code": 201, "Message": "Not found your account"})
+		} else if flag == 204 {
+			c.JSON(http.StatusOK, gin.H{"code": 204, "Message": "Not found your account"})
+		} else if flag == 205 {
+			c.JSON(http.StatusOK, gin.H{"code": 205, "Message": "System error!!!"})
+		} else if flag == 201 {
+			c.JSON(http.StatusOK, gin.H{"code": 201, "Message": "Wrong password..."})
 		}
 	})
 

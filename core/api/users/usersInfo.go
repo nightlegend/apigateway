@@ -2,6 +2,7 @@ package users
 
 import (
 	"github.com/nightlegend/apigateway/core/module"
+	"github.com/nightlegend/apigateway/core/utils"
 	"github.com/nightlegend/apigateway/core/utils/db"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
@@ -32,7 +33,7 @@ func Register(userInfo module.UserInfo) bool {
 * * param [userName, password]
 * * return bool type.
  */
-func Login(userName string, password string) bool {
+func Login(userName string, password string) int {
 	/*
 	* Get db connection
 	 */
@@ -42,10 +43,16 @@ func Login(userName string, password string) bool {
 	c := session.DB("test").C("userInfo")
 
 	var userInfo module.UserInfo
-	err := c.Find(bson.M{"username": userName, "password": password}).One(&userInfo)
+	err := c.Find(bson.M{"username": userName}).One(&userInfo)
 	if err != nil {
 		log.Println(err)
-		return false
+		return 204
 	}
-	return true
+	if password == utils.DeCryptedStr([]byte(userInfo.PASSWORD)) {
+		return 200
+	} else {
+		return 201
+	}
+
+	return 205
 }
