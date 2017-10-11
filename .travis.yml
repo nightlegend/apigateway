@@ -5,17 +5,13 @@ go:
 git:
   depth: 3
 
-install:
-  - make install
-
 go_import_path: github.com/nightlegend/apigateway
 
 script:
-  - make vet
-  - make fmt-check
-  - make embedmd
-  - make misspell-check
-  - make test
+  - go get
+  - go install
+  - cd /home/travis/build/nightlegend/apigateway/core/utils/
+  - go test -v -covermode=count -coverprofile=coverage.out
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
