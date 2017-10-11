@@ -1,23 +1,26 @@
 language: go
 sudo: false
 go:
-  - 1.4
-  - 1.5.4
-  - 1.6.4
-  - 1.7.4
-  - tip
+  - 1.6.x
+  - 1.7.x
+  - 1.8.x
+  - 1.9.x
+  - master
+
+git:
+  depth: 3
+
+install:
+  - make install
+
+go_import_path: github.com/nightlegend/apigateway
 
 script:
-  - cd /home/travis/build/nightlegend/apigateway/core/utils/
-  - go test -v -covermode=count -coverprofile=coverage.out
+  - make vet
+  - make fmt-check
+  - make embedmd
+  - make misspell-check
+  - make test
 
-# after_success:
-#   - bash <(curl -s https://codecov.io/bash)
-
-# notifications:
-#   webhooks:
-#     urls:
-#       - https://webhooks.gitter.im/e/7f95bf605c4d356372f4
-#     on_success: change  # options: [always|never|change] default: always
-#     on_failure: always  # options: [always|never|change] default: always
-# on_start: false     # default: false
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
