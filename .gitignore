@@ -2,3 +2,4 @@
 *.log
 apigateway
 *.exe
+*.out

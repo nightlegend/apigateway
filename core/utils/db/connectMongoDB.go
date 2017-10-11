@@ -27,6 +27,7 @@ func Connectmon() *mgo.Session {
 	session, err := mgo.Dial("mongodb://" + config.Mongohost + ":" + config.Mongoport)
 	if err != nil {
 		panic(err)
+
 	}
 	return session
 }

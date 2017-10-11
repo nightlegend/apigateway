@@ -54,7 +54,7 @@ func PublicApiRouter(router gin.Engine) {
 		c.BindJSON(&loginInfo)
 		flag := users.Login(loginInfo.USERNAME, loginInfo.PASSWORD)
 		if flag == 200 {
-			c.JSON(http.StatusOK, gin.H{"code": 200, "Message": "Login Successful"})
+			c.JSON(http.StatusOK, gin.H{"code": 200, "Message": "Login Successful", "tooken": ""})
 		} else if flag == 204 {
 			c.JSON(http.StatusOK, gin.H{"code": 204, "Message": "Not found your account"})
 		} else if flag == 205 {
