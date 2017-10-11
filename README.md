@@ -2,11 +2,9 @@
 
 [![Build Status](https://travis-ci.org/nightlegend/Dashboard.svg)](https://travis-ci.org/nightlegend/apigateway) [![codecov](https://codecov.io/gh/nightlegend/apigateway/branch/dev1.0/graph/badge.svg)](https://codecov.io/gh/nightlegend/apigateway)
 
-It`s build by golang and go-gin. Hope privode a good solution to you.<br>
+Apigateway is a api-gateway server demo written in [golang](https://golang.org/) and [go-gin](https://gin-gonic.github.io/gin/). It features a simple and better performance, you can faster build your api server by this templete. If you need fast build a api gateway server, you will love Apigateway.
 
-<a href="https://golang.org/">golang</a>
 
-<a href="https://gin-gonic.github.io/gin/">go-gin</a>
 
 <h1>Design</h1>
 
