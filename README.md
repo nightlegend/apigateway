@@ -1,5 +1,7 @@
 # Api Gateway: Try a new way by golang
 
+[![Build Status](https://travis-ci.org/nightlegend/Dashboard.svg)](https://travis-ci.org/nightlegend/apigateway) [![codecov](https://codecov.io/gh/nightlegend/apigateway/branch/dev1.0/graph/badge.svg)](https://codecov.io/gh/nightlegend/apigateway)
+
 It`s build by golang and go-gin. Hope privode a good solution to you.<br>
 
 <a href="https://golang.org/">golang</a>
