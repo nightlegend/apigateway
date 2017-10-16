@@ -28,13 +28,13 @@ Apigateway is a api-gateway server demo written in [golang](https://golang.org/)
 
 2. Build and run step
 
-    <code>
-        git clone https://github.com/nightlegend/apigateway.git ${golang_workspace}/src/github.com/nightlegend/
-        cd ${golang_workspace}/src/github.com/nightlegend/apigateway
-        go get
-        go install
-        go run server.go
-    </code>
+    <pre>
+    git clone https://github.com/nightlegend/apigateway.git ${golang_workspace}/src/github.com/nightlegend/
+    cd ${golang_workspace}/src/github.com/nightlegend/apigateway
+    go get
+    go install
+    go run server.go
+    </pre>
 
 If running normally, you can access<a href="http://localhost:8012">http://localhost:8012</a>
 
