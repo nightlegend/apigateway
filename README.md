@@ -22,24 +22,24 @@ Apigateway is a api-gateway server demo written in [golang](https://golang.org/)
 1. Prepare step(optional)
 
     <pre>
-        start mongo db in your localhost, and update your mongodb info in /conf/app.conf.yml.
-        You also can choise mysqldb.
+    start mongo db in your localhost, and update your mongodb info in /conf/app.conf.yml.
+    You also can choise mysqldb.
     </pre>
 
 2. Build and run step
 
     <pre>
-        git clone https://github.com/nightlegend/apigateway.git ${golang_workspace}/src/github.com/nightlegend/
-        cd ${golang_workspace}/src/github.com/nightlegend/apigateway
-        go get
-        go install
-        go run server.go
+    git clone https://github.com/nightlegend/apigateway.git ${golang_workspace}/src/github.com/nightlegend/
+    cd ${golang_workspace}/src/github.com/nightlegend/apigateway
+    go get
+    go install
+    go run server.go
     </pre>
 
 If running normally, you can access<a href="http://localhost:8012">http://localhost:8012</a>
 
 
-If you need a [frond-end](https://github.com/nightlegend/Dashboard) template, It`s will help you.
+If you need a [frond-end](https://github.com/nightlegend/Dashboard) template, It`s will be help you.
 
 <small>Keep update to here for latest changed. Thanks for you love it.</small>
 
