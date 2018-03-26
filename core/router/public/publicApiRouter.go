@@ -1,21 +1,25 @@
 package public
 
 import (
+	"net/http"
+
+	log "github.com/sirupsen/logrus"
+
+	"github.com/gin-gonic/gin"
 	"github.com/nightlegend/apigateway/core/api/docker"
 	"github.com/nightlegend/apigateway/core/api/users"
 	"github.com/nightlegend/apigateway/core/module"
 	"github.com/nightlegend/apigateway/core/utils"
-	"gopkg.in/gin-gonic/gin.v1"
-	"log"
-	"net/http"
 )
 
+// LoginInfo : define login entry
 type LoginInfo struct {
 	USERNAME string `json:"userName" binding:"required"`
 	PASSWORD string `json:"password" binding:"required"`
 }
 
-func PublicApiRouter(router gin.Engine) {
+// APIRouter is route public router
+func APIRouter(router *gin.Engine) {
 	log.Println("start init public router.......")
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "welcome to apigateway, you can find you want here!!!", "userInfo": "Hello World!!!"})

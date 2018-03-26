@@ -4,16 +4,14 @@ import (
 	"github.com/nightlegend/apigateway/core/module"
 	"github.com/nightlegend/apigateway/core/utils"
 	"github.com/nightlegend/apigateway/core/utils/db"
+	log "github.com/sirupsen/logrus"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
-	"log"
 )
 
-/*
-* Register
-* * param [UserInfo]
-* * return bool type.
- */
+// Register :
+// param [UserInfo]
+// return bool type.
 func Register(userInfo module.UserInfo) bool {
 	session := db.Connectmon()
 	defer session.Close()
@@ -28,11 +26,9 @@ func Register(userInfo module.UserInfo) bool {
 	return true
 }
 
-/*
-* Login
-* * param [userName, password]
-* * return bool type.
- */
+// Login :
+// param [userName, password]
+// return bool type.
 func Login(userName string, password string) int {
 	/*
 	* Get db connection

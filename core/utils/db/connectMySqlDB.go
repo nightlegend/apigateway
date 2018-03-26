@@ -2,13 +2,16 @@ package db
 
 import (
 	"database/sql"
-	_ "github.com/go-sql-driver/mysql"
-	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
 	"os"
+
+	// _ "github.com/go-sql-driver/mysql"
+	"gopkg.in/yaml.v2"
 )
 
+// Configure :
+// define mysql struct
 type Configure struct {
 	Mysqldbhost     string `json:"mysqldbhost"`
 	Mysqldbport     string `json:"mysqldbport"`
@@ -17,6 +20,8 @@ type Configure struct {
 	Mysqldbpassword string `json:"mysqldbpassword"`
 }
 
+// Connect :
+// mysql db connect function.
 func Connect() *sql.DB {
 	dir, err := os.Getwd()
 	if err != nil {

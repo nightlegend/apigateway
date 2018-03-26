@@ -1,12 +1,15 @@
 package socketio
 
 import (
-	"log"
 	"net/http"
+
+	log "github.com/sirupsen/logrus"
 
 	"github.com/googollee/go-socket.io"
 )
 
+// RunServer :
+// Start a socket server.
 func RunServer() {
 	server, err := socketio.NewServer(nil)
 	if err != nil {

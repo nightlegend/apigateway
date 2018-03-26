@@ -1,18 +1,23 @@
 package db
 
 import (
+	"io/ioutil"
+	"os"
+
+	log "github.com/sirupsen/logrus"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/yaml.v2"
-	"io/ioutil"
-	"log"
-	"os"
 )
 
+// Config :
+// define mongo struct
 type Config struct {
 	Mongohost string `json:"mongohost"`
 	Mongoport string `json:"mongoport"`
 }
 
+// Connectmon :
+// connect mongo db.
 func Connectmon() *mgo.Session {
 	execDirAbsPath, _ := os.Getwd()
 	data, err := ioutil.ReadFile(execDirAbsPath + "/conf/app.conf.yml")

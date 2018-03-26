@@ -1,11 +1,12 @@
 package main
 
 import (
+	"os"
+
 	"github.com/nightlegend/apigateway/conf"
 	"github.com/nightlegend/apigateway/core/router"
 	"github.com/nightlegend/apigateway/core/socketio"
-	"log"
-	"os"
+	log "github.com/sirupsen/logrus"
 )
 
 /*
@@ -14,32 +15,26 @@ import (
  * * * 2. Start Socket
  */
 func main() {
-	/*
-	 * Init global logs file
-	 */
+	// Init global logs file
 	execDirAbsPath, _ := os.Getwd()
 	f, err := os.OpenFile(execDirAbsPath+"/logs/app.log", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	//defer to close when you're done with it, not because you think it's idiomatic!
 	defer f.Close()
+
 	//set output of logs to file
 	log.SetOutput(f)
 
-	/*
-	 * Init env configure.
-	 */
+	// Init env configure.
 	os.Setenv("APIGATEWAY_RUNING_ENV", "development")
 	go conf.InitServer()
 
-	/*
-	 * Init RESTFul server
-	 * Init Socket server
-	 */
-
 	// Start socket server(listen on 5000).
 	go socketio.RunServer()
+
 	// Start RESTFul server (listen on 8012)
 	router.Start()
 

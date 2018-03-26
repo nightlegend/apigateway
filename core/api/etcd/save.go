@@ -2,10 +2,11 @@ package etcd
 
 import (
 	"github.com/nightlegend/apigateway/core/utils/etcd"
+	log "github.com/sirupsen/logrus"
 	"golang.org/x/net/context"
-	"log"
 )
 
+// SaveAction :save data to etcd.
 func SaveAction() {
 	kapi := etcd.EtcdConn()
 	resp, err := kapi.Set(context.Background(), "/test", "test", nil)
