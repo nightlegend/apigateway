@@ -3,6 +3,7 @@ package users
 import (
 	"github.com/nightlegend/apigateway/core/module"
 	"github.com/nightlegend/apigateway/core/utils"
+	"github.com/nightlegend/apigateway/core/utils/consts"
 	"github.com/nightlegend/apigateway/core/utils/db"
 	log "github.com/sirupsen/logrus"
 	"gopkg.in/mgo.v2"
@@ -42,13 +43,13 @@ func Login(userName string, password string) int {
 	err := c.Find(bson.M{"username": userName}).One(&userInfo)
 	if err != nil {
 		log.Println(err)
-		return 204
+		return consts.NOACCOUNT
 	}
 	if password == utils.DeCryptedStr([]byte(userInfo.PASSWORD)) {
-		return 200
-	} else {
-		return 201
+		return consts.SUCCESS
+	} else if password != utils.DeCryptedStr([]byte(userInfo.PASSWORD)) {
+		return consts.WRONGPASSWD
 	}
 
-	return 205
+	return consts.SYSERROR
 }

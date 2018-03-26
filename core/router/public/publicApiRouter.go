@@ -10,6 +10,7 @@ import (
 	"github.com/nightlegend/apigateway/core/api/users"
 	"github.com/nightlegend/apigateway/core/module"
 	"github.com/nightlegend/apigateway/core/utils"
+	"github.com/nightlegend/apigateway/core/utils/consts"
 )
 
 // LoginInfo : define login entry
@@ -57,14 +58,14 @@ func APIRouter(router *gin.Engine) {
 		var loginInfo LoginInfo
 		c.BindJSON(&loginInfo)
 		flag := users.Login(loginInfo.USERNAME, loginInfo.PASSWORD)
-		if flag == 200 {
-			c.JSON(http.StatusOK, gin.H{"code": 200, "Message": "Login Successful", "tooken": ""})
-		} else if flag == 204 {
-			c.JSON(http.StatusOK, gin.H{"code": 204, "Message": "Not found your account"})
-		} else if flag == 205 {
-			c.JSON(http.StatusOK, gin.H{"code": 205, "Message": "System error!!!"})
-		} else if flag == 201 {
-			c.JSON(http.StatusOK, gin.H{"code": 201, "Message": "Wrong password..."})
+		if flag == consts.SUCCESS {
+			c.JSON(http.StatusOK, gin.H{"code": consts.SUCCESS, "Message": "Login Successful", "tooken": ""})
+		} else if flag == consts.NOACCOUNT {
+			c.JSON(http.StatusOK, gin.H{"code": consts.NOACCOUNT, "Message": "Not found your account"})
+		} else if flag == consts.SYSERROR {
+			c.JSON(http.StatusOK, gin.H{"code": consts.SYSERROR, "Message": "System error!!!"})
+		} else if flag == consts.WRONGPASSWD {
+			c.JSON(http.StatusOK, gin.H{"code": consts.WRONGPASSWD, "Message": "Wrong password..."})
 		}
 	})
 
