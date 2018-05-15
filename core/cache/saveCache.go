@@ -17,5 +17,5 @@ func SaveLoginSession(loginSession string) {
 	if err != nil {
 		panic(err)
 	}
-	log.Println("sessionId", val)
+	log.Info("sessionId", val)
 }

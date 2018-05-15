@@ -19,7 +19,7 @@ var secrets = gin.H{
 // APIRouter : define a private router.
 func APIRouter(router *gin.Engine) {
 
-	log.Println("start init private router.......")
+	log.Info("start init private router.......")
 	authorized := router.Group("/admin", gin.BasicAuth(gin.Accounts{
 		"golang": "golang",
 		"admin":  "Password1",
@@ -96,5 +96,5 @@ func APIRouter(router *gin.Engine) {
 			c.JSON(http.StatusOK, gin.H{"user": user, "secret": "NO SECRET :("})
 		}
 	})
-	log.Println("complete init private router.......")
+	log.Info("complete init private router.......")
 }

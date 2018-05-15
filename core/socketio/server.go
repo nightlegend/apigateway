@@ -16,22 +16,22 @@ func RunServer() {
 		log.Fatal(err)
 	}
 	server.On("connection", func(so socketio.Socket) {
-		log.Println("on connection")
+		log.Info("on connection")
 		so.Join("chat")
 		so.On("chat message", func(msg string) {
-			log.Println("emit:", so.Emit("chat message", msg))
-			log.Println(msg)
+			log.Info("emit:", so.Emit("chat message", msg))
+			log.Info(msg)
 			so.BroadcastTo("chat", "chat message", msg)
 		})
 		so.On("disconnection", func() {
-			log.Println("on disconnect")
+			log.Info("on disconnect")
 		})
 	})
 	server.On("error", func(so socketio.Socket, err error) {
-		log.Println("error:", err)
+		log.Info("error:", err)
 	})
 
 	http.Handle("/socket.io/", server)
-	log.Println("Serving at localhost:5000...")
+	log.Info("Serving at localhost:5000...")
 	log.Fatal(http.ListenAndServe(":5000", nil))
 }

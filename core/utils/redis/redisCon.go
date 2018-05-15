@@ -1,9 +1,8 @@
 package redis
 
 import (
-	"fmt"
-
 	"github.com/go-redis/redis"
+	log "github.com/sirupsen/logrus"
 )
 
 // NewClient :
@@ -16,7 +15,7 @@ func NewClient() *redis.Client {
 	})
 
 	pong, err := client.Ping().Result()
-	fmt.Println(pong, err)
+	log.Info(pong, err)
 	// Output: PONG <nil>
 	return client
 }

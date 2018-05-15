@@ -21,7 +21,7 @@ type LoginInfo struct {
 
 // APIRouter is route public router
 func APIRouter(router *gin.Engine) {
-	log.Println("start init public router.......")
+	log.Info("start init public router.......")
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "welcome to apigateway, you can find you want here!!!", "userInfo": "Hello World!!!"})
 	})
@@ -69,5 +69,5 @@ func APIRouter(router *gin.Engine) {
 		}
 	})
 
-	log.Println("complete init public router.......")
+	log.Info("complete init public router.......")
 }
