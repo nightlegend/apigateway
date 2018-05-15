@@ -4,7 +4,6 @@
 
 Apigateway is a api-gateway server demo written in [golang](https://golang.org/) and [go-gin](https://gin-gonic.github.io/gin/). It features a simple and better performance, you can faster build your api server by this templete. If you need fast build a api gateway server, you will love Apigateway.
 
-https://travis-ci.org/nightlegend/apigateway.svg?branch=dev1.0
 
 <h1>Design</h1>
 
