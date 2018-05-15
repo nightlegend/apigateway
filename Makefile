@@ -58,4 +58,4 @@ misspell:
 	@hash misspell > /dev/null 2>&1; if [ $$? -ne 0 ]; then \
 		go get -u github.com/client9/misspell/cmd/misspell; \
 	fi
-misspell -w $(GOFILES)
+	misspell -w $(GOFILES)
