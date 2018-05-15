@@ -1,6 +1,6 @@
 # Api Gateway: Try a new way by golang
 
-[![Build Status](https://travis-ci.org/nightlegend/apigateway.svg?branch=dev1.0)](https://travis-ci.org/nightlegend/apigateway) [![codecov](https://codecov.io/gh/nightlegend/apigateway/branch/dev1.0/graph/badge.svg)](https://codecov.io/gh/nightlegend/apigateway) [![Gitter](https://badges.gitter.im/nightlegend/apigateway.svg)](https://gitter.im/nightlegend/apigateway?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![Build Status](https://travis-ci.org/nightlegend/apigateway.svg?branch=dev1.0)](https://travis-ci.org/nightlegend/apigateway) [![codecov](https://codecov.io/gh/nightlegend/apigateway/branch/dev1.0/graph/badge.svg)](https://codecov.io/gh/nightlegend/apigateway) [![Go Report Card](https://goreportcard.com/badge/github.com/nightlegend/apigateway)](https://goreportcard.com/report/github.com/nightlegend/apigateway) [![Gitter](https://badges.gitter.im/nightlegend/apigateway.svg)](https://gitter.im/nightlegend/apigateway?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 Apigateway is a api-gateway server demo written in [golang](https://golang.org/) and [go-gin](https://gin-gonic.github.io/gin/). It features a simple and better performance, you can faster build your api server by this templete. If you need fast build a api gateway server, you will love Apigateway.
 
