@@ -40,5 +40,7 @@ If running normally, you can access<a href="http://localhost:8012">http://localh
 
 If you need a [frond-end](https://github.com/nightlegend/Dashboard) template, It`s will be help you.
 
+If you need a [SOCKET-SERVER](https://github.com/nightlegend/hi), It`s can help you.
+
 <small>Keep update to here for latest changed. Thanks for you love it.</small>
 
