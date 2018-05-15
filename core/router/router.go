@@ -1,11 +1,11 @@
 package router
 
 import (
+	log "github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
 	"github.com/nightlegend/apigateway/core/router/private"
 	"github.com/nightlegend/apigateway/core/router/public"
 	"github.com/nightlegend/apigateway/middleware"
-	log "github.com/sirupsen/logrus"
 )
 
 func init() {
@@ -13,12 +13,12 @@ func init() {
 	gin.SetMode(gin.ReleaseMode)
 }
 
-// Start from here.
+// Start a api server.Here define two type router(public and private)
 func Start() {
 	router := gin.New()
-	router.Use(middleware.CORSMiddleware())
+	router.Use(middleware.CORSMiddleware()) // import CORS
 	router.Use(gin.Logger())
-	public.APIRouter(router)
-	private.APIRouter(router)
-	router.Run(":8012")
+	public.APIRouter(router)  //No Permission Validation
+	private.APIRouter(router) //Permission Validation
+	router.Run(":8012")       //listen on 8012.
 }

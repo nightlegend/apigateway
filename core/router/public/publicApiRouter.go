@@ -3,7 +3,7 @@ package public
 import (
 	"net/http"
 
-	log "github.com/sirupsen/logrus"
+	log "github.com/Sirupsen/logrus"
 
 	"github.com/gin-gonic/gin"
 	"github.com/nightlegend/apigateway/core/api/docker"

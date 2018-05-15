@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
+	log "github.com/Sirupsen/logrus"
 	"github.com/nightlegend/apigateway/core/router"
-	log "github.com/sirupsen/logrus"
 )
 
 // Api server start from here. router is define your api router and public it.

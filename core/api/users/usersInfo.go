@@ -1,11 +1,11 @@
 package users
 
 import (
+	log "github.com/Sirupsen/logrus"
 	"github.com/nightlegend/apigateway/core/module"
 	"github.com/nightlegend/apigateway/core/utils"
 	"github.com/nightlegend/apigateway/core/utils/consts"
 	"github.com/nightlegend/apigateway/core/utils/db"
-	log "github.com/sirupsen/logrus"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
 )

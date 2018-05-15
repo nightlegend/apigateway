@@ -3,7 +3,7 @@ package socketio
 import (
 	"net/http"
 
-	log "github.com/sirupsen/logrus"
+	log "github.com/Sirupsen/logrus"
 
 	"github.com/googollee/go-socket.io"
 )

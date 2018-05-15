@@ -3,13 +3,13 @@ package etcd
 import (
 	"time"
 
+	log "github.com/Sirupsen/logrus"
 	"github.com/coreos/etcd/client"
-	log "github.com/sirupsen/logrus"
 )
 
-// EtcdConn :
+// Conn :
 // connect to etcd
-func EtcdConn() client.KeysAPI {
+func Conn() client.KeysAPI {
 	cfg := client.Config{
 		Endpoints: []string{"http://127.0.0.1:2379"},
 		Transport: client.DefaultTransport,
