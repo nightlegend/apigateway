@@ -4,7 +4,7 @@ set -e
 
 echo "mode: count" > coverage.out
 
-for d in $(go list ./...|grep -E 'apigateway$'); do
+for d in $(go list ./...|grep -E 'utils$'); do
     go test -v -covermode=count -coverprofile=profile.out $d
     if [ -f profile.out ]; then
         cat profile.out | grep -v "mode:" >> coverage.out
