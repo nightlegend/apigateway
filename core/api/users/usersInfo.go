@@ -31,11 +31,10 @@ func Register(userInfo module.UserInfo) bool {
 // param [userName, password]
 // return bool type.
 func Login(userName string, password string) int {
-	/*
-	* Get db connection
-	 */
+
 	session := db.Connectmon()
 	defer session.Close()
+
 	session.SetMode(mgo.Monotonic, true)
 	c := session.DB("test").C("userInfo")
 

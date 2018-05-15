@@ -12,17 +12,17 @@ func TestGetCurrentTime(t *testing.T) {
 	}
 }
 
-func TestGetCurrentTimeByYYYY_MM_DD(t *testing.T) {
-	if GetCurrentTimeByYYYY_MM_DD() != "" {
-		t.Log(GetCurrentTimeByYYYY_MM_DD())
+func TestGetCurrentTimeByYYYYMMDD(t *testing.T) {
+	if GetCurrentTimeByYYYYMMDD() != "" {
+		t.Log(GetCurrentTimeByYYYYMMDD())
 	} else {
 		t.Error("error")
 	}
 }
 
-func TestGetCurrentTimeByYYYY_MM_DDHH_MM_SS(t *testing.T) {
-	if GetCurrentTimeByYYYY_MM_DD() != "" {
-		t.Log(GetCurrentTimeByYYYY_MM_DDHH_MM_SS())
+func TestGetCurrentTimeByYYYYMMDDHHMMSS(t *testing.T) {
+	if GetCurrentTimeByYYYYMMDDHHMMSS() != "" {
+		t.Log(GetCurrentTimeByYYYYMMDDHHMMSS())
 	} else {
 		t.Error("format error")
 	}
