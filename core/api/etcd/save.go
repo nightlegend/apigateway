@@ -8,7 +8,7 @@ import (
 
 // SaveAction :save data to etcd.
 func SaveAction() {
-	kapi := etcd.EtcdConn()
+	kapi := etcd.Conn()
 	resp, err := kapi.Set(context.Background(), "/test", "test", nil)
 	if err != nil {
 		log.Fatal(err)
