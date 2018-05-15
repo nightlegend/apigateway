@@ -8,8 +8,7 @@ import (
 	"github.com/googollee/go-socket.io"
 )
 
-// RunServer :
-// Start a socket server.
+// RunServer is start a socket server.
 func RunServer() {
 	server, err := socketio.NewServer(nil)
 	if err != nil {

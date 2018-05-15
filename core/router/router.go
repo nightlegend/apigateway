@@ -19,7 +19,6 @@ func Start() {
 	router.Use(middleware.CORSMiddleware())
 	router.Use(gin.Logger())
 	public.APIRouter(router)
-
 	private.APIRouter(router)
 	router.Run(":8012")
 }
