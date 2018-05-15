@@ -6,7 +6,7 @@ git:
   depth: 3
 
 install:
-- make install
+  - make install
 
 go_import_path: github.com/nightlegend/apigateway
 
