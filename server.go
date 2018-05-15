@@ -22,7 +22,7 @@ func main() {
 	log.SetOutput(f)
 
 	// Init env configure.
-	// os.Setenv("APIGATEWAY_RUNING_ENV", "development")
+	// os.Setenv("APIGATEWAY_RUNNING_ENV", "development")
 	// go conf.InitServer()
 
 	// Start socket server(listen on 5000).

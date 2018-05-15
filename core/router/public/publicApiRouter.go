@@ -48,7 +48,7 @@ func APIRouter(router *gin.Engine) {
 		registerInfo.PASSWORD = string(utils.Crypted(password)) //encryption password.
 		result := users.Register(registerInfo)
 		if result {
-			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Welcome " + registerInfo.USERNAME + ",you have login sucessful!"})
+			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Welcome " + registerInfo.USERNAME + ",you have login successful!"})
 		} else {
 			c.JSON(http.StatusExpectationFailed, gin.H{"errorMessage": "Rigster failed "})
 		}

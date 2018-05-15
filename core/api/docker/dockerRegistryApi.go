@@ -22,7 +22,7 @@ func GetRegistryImages() []byte {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, _ := ioutil.ReadAll(resp.Body)
 	return body
 }
 
@@ -34,7 +34,7 @@ func GetAllTagByImageName(imageName string) []byte {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, _ := ioutil.ReadAll(resp.Body)
 	return body
 }
 
@@ -46,6 +46,6 @@ func GetImageTagInfo(imageName string, imageTag string) []byte {
 	}
 	defer resp.Body.Close()
 
-	body, err := ioutil.ReadAll(resp.Body)
+	body, _ := ioutil.ReadAll(resp.Body)
 	return body
 }
