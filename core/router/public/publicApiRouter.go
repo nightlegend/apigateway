@@ -8,16 +8,13 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/nightlegend/apigateway/core/api/docker"
 	"github.com/nightlegend/apigateway/core/api/users"
-	"github.com/nightlegend/apigateway/core/module"
 	"github.com/nightlegend/apigateway/core/utils"
 	"github.com/nightlegend/apigateway/core/utils/consts"
 )
 
-// LoginInfo : define login entry
-type LoginInfo struct {
-	USERNAME string `json:"userName" binding:"required"`
-	PASSWORD string `json:"password" binding:"required"`
-}
+var (
+	uis users.UserInfoService
+)
 
 // APIRouter is route public router
 func APIRouter(router *gin.Engine) {
@@ -27,9 +24,8 @@ func APIRouter(router *gin.Engine) {
 	})
 
 	router.POST("/login", func(c *gin.Context) {
-		var loginInfo LoginInfo
-		c.BindJSON(&loginInfo)
-		flag := users.Login(loginInfo.USERNAME, loginInfo.PASSWORD)
+		c.BindJSON(&uis)
+		flag := uis.Login()
 		switch flag {
 		case consts.SUCCESS:
 			c.JSON(http.StatusOK, gin.H{"code": consts.SUCCESS, "Message": "Login Successful", "tooken": ""})
@@ -43,13 +39,12 @@ func APIRouter(router *gin.Engine) {
 	})
 
 	router.POST("/register", func(c *gin.Context) {
-		var registerInfo module.UserInfo
-		c.BindJSON(&registerInfo)
-		password := string(registerInfo.PASSWORD)
-		registerInfo.PASSWORD = string(utils.Crypted(password)) //encryption password.
-		result := users.Register(registerInfo)
+		c.BindJSON(&uis)
+		password := string(uis.PASSWORD)
+		uis.PASSWORD = string(utils.Crypted(password)) //encryption password.
+		result := uis.Register()
 		if result {
-			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Welcome " + registerInfo.USERNAME + ",you have login successful!"})
+			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Welcome " + uis.USERNAME + ",you have login successful!"})
 		} else {
 			c.JSON(http.StatusExpectationFailed, gin.H{"errorMessage": "Rigster failed "})
 		}
