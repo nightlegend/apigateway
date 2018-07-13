@@ -1,15 +1,20 @@
 package main
 
 import (
+	"flag"
 	"os"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/nightlegend/apigateway/core/router"
 )
 
+var (
+	env = flag.String("env", "development", "running environment")
+)
+
 // Api server start from here. router is define your api router and public it.
 func main() {
-
+	flag.Parse()
 	// set golable logs file path.
 	execDirAbsPath, _ := os.Getwd()
 	f, err := os.OpenFile(execDirAbsPath+"/logs/app.log", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
@@ -21,13 +26,6 @@ func main() {
 	//set output of logs to file
 	log.SetOutput(f)
 
-	// Init env configure.
-	// os.Setenv("APIGATEWAY_RUNNING_ENV", "development")
-	// go conf.InitServer()
-
-	// Start socket server(listen on 5000).
-	// go socketio.RunServer()
-
-	router.Start() //start api server, listen on 8012.
-
+	//start api server.
+	router.Start(*env)
 }

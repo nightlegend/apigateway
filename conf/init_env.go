@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	log "github.com/sirupsen/logrus"
+	log "github.com/Sirupsen/logrus"
 	"gopkg.in/yaml.v2"
 )
 
@@ -24,7 +24,7 @@ func InitServer() {
 	// log.SetOutput(f)
 	execDirAbsPath, _ := os.Getwd()
 	log.Info("start init env configure")
-	env := os.Getenv("APIGATEWAY_RUNING_ENV")
+	env := os.Getenv("APIGATEWAY_RUNNING_ENV")
 	log.Info("You load env is:" + env)
 
 	data, err := ioutil.ReadFile(execDirAbsPath + "/conf/env/" + env + ".conf.yaml")

@@ -32,10 +32,10 @@ Apigateway is a api-gateway server demo written in [golang](https://golang.org/)
     cd ${golang_workspace}/src/github.com/nightlegend/apigateway
     go get
     go install
-    go run server.go
+    go run server.go or go run server.go -env development(enable/disable DebugMode)
     </pre>
 
-If running normally, you can access<a href="http://localhost:8012">http://localhost:8012</a>
+If running normally, you can access<a href="http://localhost:8080">http://localhost:8080</a>
 
 
 If you need a [frond-end](https://github.com/nightlegend/Dashboard) template, It`s will be help you.
