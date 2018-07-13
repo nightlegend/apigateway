@@ -32,7 +32,9 @@ Apigateway is a api-gateway server demo written in [golang](https://golang.org/)
     cd ${golang_workspace}/src/github.com/nightlegend/apigateway
     go get
     go install
-    go run server.go or go run server.go -env development(enable/disable DebugMode)
+    go run server.go 
+    OR 
+    go run server.go -env development(enable/disable DebugMode)
     </pre>
 
 If running normally, you can access<a href="http://localhost:8080">http://localhost:8080</a>
@@ -41,6 +43,8 @@ If running normally, you can access<a href="http://localhost:8080">http://localh
 If you need a [frond-end](https://github.com/nightlegend/Dashboard) template, It`s will be help you.
 
 If you need a [SOCKET-SERVER](https://github.com/nightlegend/hi), It`s can help you.
+
+If you interest grpc, I am happy to give a sample to you, [GRPC-GO](https://github.com/nightlegend/grpc-server-go), hope you love it, thanks. (development stage)
 
 <small>Keep update to here for latest changed. Thanks for you love it.</small>
 
