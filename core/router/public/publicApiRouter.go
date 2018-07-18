@@ -5,6 +5,8 @@ import (
 
 	log "github.com/Sirupsen/logrus"
 
+	"github.com/gin-contrib/sessions"
+	"github.com/gin-contrib/sessions/redis"
 	"github.com/gin-gonic/gin"
 	"github.com/nightlegend/apigateway/core/api/docker"
 	"github.com/nightlegend/apigateway/core/api/users"
@@ -14,19 +16,34 @@ import (
 
 var (
 	// User services
-	uis users.UserInfoService
+	uis  users.UserInfoService
+	flag int
 )
 
 // APIRouter is route public router
 func APIRouter(router *gin.Engine) {
 	log.Info("start init public router.......")
+	store, _ := redis.NewStore(10, "tcp", "localhost:6379", "", []byte("secret"))
+	router.Use(sessions.Sessions("mysession", store))
+
 	router.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message": "welcome to apigateway, you can find you want here!!!", "userInfo": "Hello World!!!"})
 	})
 
 	router.POST("/login", func(c *gin.Context) {
 		c.BindJSON(&uis)
-		flag := uis.Login()
+		session := sessions.Default(c)
+		v := session.Get(uis.USERNAME)
+		if v == nil {
+			flag = uis.Login()
+			session.Set(uis.USERNAME, uis.USERNAME)
+			session.Save()
+			log.Println("Try login and save session in session store.")
+		} else {
+			flag = consts.SUCCESS
+			log.Println("Have a session in session store.")
+		}
+
 		switch flag {
 		case consts.SUCCESS:
 			c.JSON(http.StatusOK, gin.H{"code": consts.SUCCESS, "Message": "Login Successful", "tooken": ""})

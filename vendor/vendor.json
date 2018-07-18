@@ -203,6 +203,18 @@
 			"revisionTime": "2016-10-24T01:47:02Z"
 		},
 		{
+			"checksumSHA1": "2g4j0LKpz8IXCaIg/v3iMaFMSpo=",
+			"path": "github.com/gin-contrib/sessions",
+			"revision": "da25b7bed527d57b81599b0864e0f1a7241ea913",
+			"revisionTime": "2018-07-02T03:18:52Z"
+		},
+		{
+			"checksumSHA1": "Jsls/yy+O7AflnDfhafYLmAPkAk=",
+			"path": "github.com/gin-contrib/sessions/redis",
+			"revision": "da25b7bed527d57b81599b0864e0f1a7241ea913",
+			"revisionTime": "2018-07-02T03:18:52Z"
+		},
+		{
 			"checksumSHA1": "2BJfc/+6NtCXMqEHgxKy55gVxXc=",
 			"path": "github.com/gin-gonic/contrib/sessions",
 			"revision": "cf28f84316e50a05a59d174b37c26ad9a43a1201",
@@ -351,6 +363,12 @@
 			"path": "github.com/manucorporat/sse",
 			"revision": "ee05b128a739a0fb76c7ebd3ae4810c1de808d6d",
 			"revisionTime": "2016-01-26T18:01:36Z"
+		},
+		{
+			"checksumSHA1": "eAL5STPk6KKY0QFMqXr7B9z51cw=",
+			"path": "github.com/mitchellh/mapstructure",
+			"revision": "b4575eea38cca1123ec2dc90c26529b5c5acfcff",
+			"revisionTime": "2018-01-11T00:07:20Z"
 		},
 		{
 			"checksumSHA1": "y3Sfh9gZaVHMNPDqB0g/IqxeTwg=",

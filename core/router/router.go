@@ -37,5 +37,6 @@ func Start(env string) {
 	public.APIRouter(router)
 	//Permission Validation
 	private.APIRouter(router)
+
 	router.Run(LisAddr)
 }
