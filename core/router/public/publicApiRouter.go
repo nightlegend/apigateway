@@ -13,6 +13,7 @@ import (
 )
 
 var (
+	// User services
 	uis users.UserInfoService
 )
 

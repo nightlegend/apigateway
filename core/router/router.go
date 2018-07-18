@@ -9,7 +9,7 @@ import (
 	"github.com/nightlegend/apigateway/middleware"
 )
 
-// Define val
+// Varible define to here
 var (
 	LisAddr string
 )
@@ -21,8 +21,9 @@ func init() {
 	}
 }
 
-// Start a api server.Here define two type router(public and private)
+// Start start application by load self-define router.
 func Start(env string) {
+	// running mode switcher
 	switch env {
 	case "development":
 		gin.SetMode(gin.DebugMode)
@@ -30,9 +31,11 @@ func Start(env string) {
 		gin.SetMode(gin.ReleaseMode)
 	}
 	router := gin.New()
-	router.Use(middleware.CORSMiddleware()) // import CORS
+	router.Use(middleware.CORSMiddleware())
 	router.Use(gin.Logger())
-	public.APIRouter(router)  //No Permission Validation
-	private.APIRouter(router) //Permission Validation
+	//No Permission Validation
+	public.APIRouter(router)
+	//Permission Validation
+	private.APIRouter(router)
 	router.Run(LisAddr)
 }

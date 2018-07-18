@@ -26,6 +26,7 @@ func main() {
 	//set output of logs to file
 	log.SetOutput(f)
 
-	//start api server.
+	// start api server, *env is what`s environment will running, currentlly this only for enable or disable debug modle
+	// After may be use it load different varible.
 	router.Start(*env)
 }
