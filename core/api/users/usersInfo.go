@@ -23,7 +23,6 @@ type UserInfoService struct {
 	EMAIL    string `json:"email" binding:"required"`
 }
 
-// Register handle register action
 // Register register one new user in db, return a boolean value to make know success or not.
 func (uis UserInfoService) Register() bool {
 	return mongoHelper.Insert(collection, uis)
