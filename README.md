@@ -18,24 +18,30 @@ Apigateway is a api-gateway server demo written in [golang](https://golang.org/)
 
 <h1>How to running?</h1>
 
-1. Prepare step(optional)
+<h2>Prepare step(optional)</h2>
+<pre>
+start mongo db in your localhost, and update your mongodb info in /conf/app.conf.yml.
+You also can choise mysqldb.
+</pre>
 
-    <pre>
-    start mongo db in your localhost, and update your mongodb info in /conf/app.conf.yml.
-    You also can choise mysqldb.
-    </pre>
+<h2>Running APIGATEWAY</h2>
 
-2. Build and run step
+* Init workdir
+```sh
+go get github.com/kardianos/govendor
+cd $GOPATH/src/github.com/nightlegend/apigateway
+govendor init
+govendor add +external
+govendor install +local
+```
+> if can`t recognize govendor, please try $GOPATH/bin/govendor.
 
-    <pre>
-    git clone https://github.com/nightlegend/apigateway.git ${golang_workspace}/src/github.com/nightlegend/
-    cd ${golang_workspace}/src/github.com/nightlegend/apigateway
-    go get
-    go install
-    go run server.go 
-    OR 
-    go run server.go -env development(enable/disable DebugMode)
-    </pre>
+* Start GRPC-SERVER-GO
+```sh
+# -env mean you will up which environment.
+go run server.go -env development
+```
+
 
 If running normally, you can access<a href="http://localhost:8080">http://localhost:8080</a>
 
