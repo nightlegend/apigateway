@@ -36,7 +36,7 @@ govendor install +local
 ```
 > if can`t recognize govendor, please try $GOPATH/bin/govendor.
 
-* Start GRPC-SERVER-GO
+* Start APIGATEWAY
 ```sh
 # -env mean you will up which environment.
 go run server.go -env development
