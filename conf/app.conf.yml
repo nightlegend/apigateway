@@ -1,6 +1,7 @@
 #mongodb connection
 mongohost: 'localhost'
 mongoport: '27017'
+dbname: 'test'
 
 #mysqldb connection
 mysqldbhost: 'localhost'

@@ -15,10 +15,10 @@ type MongoHelper struct {
 }
 
 // Insert insert one record in db
-func (mongoHelper MongoHelper) Insert(ob interface{}) bool {
-	session := mongoDB.Connectmon()
+func (mongoHelper MongoHelper) Insert(cName string, ob interface{}) bool {
+	session, dbName := mongoDB.Connectmon()
 	defer session.Close()
-	c := session.DB("test").C("userInfo")
+	c := session.DB(dbName).C(cName)
 	// Optional. Switch the session to a monotonic behavior.
 	session.SetMode(mgo.Monotonic, true)
 	err := c.Insert(ob)
@@ -30,12 +30,12 @@ func (mongoHelper MongoHelper) Insert(ob interface{}) bool {
 }
 
 // Query query info by condition
-func (mongoHelper MongoHelper) Query(queryCondition interface{}, ob interface{}) (result interface{}) {
-	session := mongoDB.Connectmon()
+func (mongoHelper MongoHelper) Query(cName string, queryCondition interface{}, ob interface{}) (result interface{}) {
+	session, dbName := mongoDB.Connectmon()
 	defer session.Close()
 
 	session.SetMode(mgo.Monotonic, true)
-	c := session.DB("test").C("userInfo")
+	c := session.DB(dbName).C(cName)
 
 	err := c.Find(queryCondition).One(&ob)
 	if err != nil {

@@ -13,10 +13,11 @@ import (
 type MongoDB struct {
 	Mongohost string `json:"mongohost"`
 	Mongoport string `json:"mongoport"`
+	DBName    string `json:"dbname"`
 }
 
 // Connectmon connect mongo db.
-func (db MongoDB) Connectmon() *mgo.Session {
+func (db MongoDB) Connectmon() (*mgo.Session, string) {
 	execDirAbsPath, _ := os.Getwd()
 	data, err := ioutil.ReadFile(execDirAbsPath + "/conf/app.conf.yml")
 	if err != nil {
@@ -30,5 +31,5 @@ func (db MongoDB) Connectmon() *mgo.Session {
 	if err != nil {
 		panic(err)
 	}
-	return session
+	return session, db.DBName
 }
