@@ -12,7 +12,7 @@ import (
 
 var (
 	mongoDB     = db.MongoDB{}
-	mongoHelper = db.MongoHelper{}
+	mongoHelper = db.NewMongoHelper()
 	collection  = "userInfo"
 )
 
@@ -25,6 +25,7 @@ type UserInfoService struct {
 
 // Register register one new user in db, return a boolean value to make know success or not.
 func (uis UserInfoService) Register() bool {
+	uis.PASSWORD = string(utils.Crypted(string(uis.PASSWORD))) //encryption password.
 	return mongoHelper.Insert(collection, uis)
 }
 
@@ -47,4 +48,12 @@ func (uis UserInfoService) Login() int {
 		return consts.WRONGPASSWD
 	}
 	return consts.SYSERROR
+}
+
+// UpdateUserInfo update user account information
+func (uis UserInfoService) UpdateUserInfo() bool {
+	uis.PASSWORD = string(utils.Crypted(string(uis.PASSWORD)))
+	colQuerier := bson.M{"username": uis.USERNAME}
+	update := bson.M{"$set": bson.M{"username": uis.USERNAME, "password": uis.PASSWORD, "email": uis.EMAIL}}
+	return mongoHelper.Update(collection, colQuerier, update)
 }

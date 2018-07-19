@@ -14,6 +14,11 @@ var (
 type MongoHelper struct {
 }
 
+// NewMongoHelper initializes a new mongo helper.
+func NewMongoHelper() MongoHelper {
+	return MongoHelper{}
+}
+
 // Insert insert one record in db
 func (mongoHelper MongoHelper) Insert(cName string, ob interface{}) bool {
 	session, dbName := mongoDB.Connectmon()
@@ -43,4 +48,19 @@ func (mongoHelper MongoHelper) Query(cName string, queryCondition interface{}, o
 		return consts.NOACCOUNT
 	}
 	return ob
+}
+
+// Update update entry
+func (mongoHelper MongoHelper) Update(cName string, colQuerier interface{}, update interface{}) bool {
+	session, dbName := mongoDB.Connectmon()
+	defer session.Close()
+
+	session.SetMode(mgo.Monotonic, true)
+	c := session.DB(dbName).C(cName)
+	if err := c.Update(colQuerier, update); err != nil {
+		log.Println(err)
+		return false
+	} else {
+		return true
+	}
 }

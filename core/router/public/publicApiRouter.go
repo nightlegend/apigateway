@@ -10,7 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/nightlegend/apigateway/core/api/docker"
 	"github.com/nightlegend/apigateway/core/api/users"
-	"github.com/nightlegend/apigateway/core/utils"
 	"github.com/nightlegend/apigateway/core/utils/consts"
 )
 
@@ -58,13 +57,21 @@ func APIRouter(router *gin.Engine) {
 
 	router.POST("/register", func(c *gin.Context) {
 		c.BindJSON(&uis)
-		password := string(uis.PASSWORD)
-		uis.PASSWORD = string(utils.Crypted(password)) //encryption password.
 		result := uis.Register()
 		if result {
 			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Welcome " + uis.USERNAME + ",you have login successful!"})
 		} else {
 			c.JSON(http.StatusExpectationFailed, gin.H{"errorMessage": "Rigster failed "})
+		}
+	})
+
+	router.POST("/update", func(c *gin.Context) {
+		c.BindJSON(&uis)
+		res := uis.UpdateUserInfo()
+		if res {
+			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": uis.USERNAME + ",you have update information successfully!"})
+		} else {
+			c.JSON(http.StatusExpectationFailed, gin.H{"errorMessage": "update information failed, please contract admin help..."})
 		}
 	})
 
