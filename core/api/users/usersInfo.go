@@ -48,10 +48,8 @@ func (uis UserInfoService) Login() int {
 
 	if uis.PASSWORD == utils.DeCryptedStr([]byte(userInfo.PASSWORD)) {
 		return consts.SUCCESS
-	} else if uis.PASSWORD != utils.DeCryptedStr([]byte(userInfo.PASSWORD)) {
-		return consts.WRONGPASSWD
 	}
-	return consts.SYSERROR
+	return consts.WRONGPASSWD
 }
 
 // UpdateUserInfo update user account information

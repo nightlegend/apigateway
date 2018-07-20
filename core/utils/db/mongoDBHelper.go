@@ -10,11 +10,11 @@ var (
 	mongoDB = MongoDB{}
 )
 
-// MongoHelper object
+// MongoHelper is the API client that performs all operations
 type MongoHelper struct {
 }
 
-// NewMongoHelper initializes a new mongo helper.
+// NewMongoHelper initializes a new mongo helper object.
 func NewMongoHelper() MongoHelper {
 	return MongoHelper{}
 }
@@ -50,7 +50,11 @@ func (mongoHelper MongoHelper) QueryOne(cName string, queryCondition interface{}
 	return ob
 }
 
-// Update update entry
+// Update is update the entry by latest changed.
+// args:
+// cName to set the collection name.
+// colQuerier to set the query collection condition.
+// update to set the update object.
 func (mongoHelper MongoHelper) Update(cName string, colQuerier interface{}, update interface{}) bool {
 	session, dbName := mongoDB.Connectmon()
 	defer session.Close()
