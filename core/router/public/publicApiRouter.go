@@ -75,6 +75,11 @@ func APIRouter(router *gin.Engine) {
 		}
 	})
 
+	router.GET("/queryAll", func(c *gin.Context) {
+		users := uis.QueryAllAccountInfo()
+		c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Query done, check console", "userList": users})
+	})
+
 	router.GET("/getImageTagInfo", func(c *gin.Context) {
 		imageName := c.DefaultQuery("imageType", "") + "/" + c.DefaultQuery("imageName", "")
 		imageTag := c.DefaultQuery("imageTag", "")

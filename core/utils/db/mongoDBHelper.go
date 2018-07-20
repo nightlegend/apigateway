@@ -34,8 +34,8 @@ func (mongoHelper MongoHelper) Insert(cName string, ob interface{}) bool {
 	return true
 }
 
-// Query query info by condition
-func (mongoHelper MongoHelper) Query(cName string, queryCondition interface{}, ob interface{}) (result interface{}) {
+// QueryOne query info by condition return one record.
+func (mongoHelper MongoHelper) QueryOne(cName string, queryCondition interface{}, ob interface{}) (result interface{}) {
 	session, dbName := mongoDB.Connectmon()
 	defer session.Close()
 
@@ -60,7 +60,20 @@ func (mongoHelper MongoHelper) Update(cName string, colQuerier interface{}, upda
 	if err := c.Update(colQuerier, update); err != nil {
 		log.Println(err)
 		return false
-	} else {
-		return true
 	}
+	return true
+}
+
+// QueryAll is query all record by condition, return a interface.
+func (mongoHelper MongoHelper) QueryAll(cName string, queryCondition interface{}, ob []interface{}) (result []interface{}) {
+	session, dbName := mongoDB.Connectmon()
+	defer session.Close()
+
+	session.SetMode(mgo.Monotonic, true)
+	c := session.DB(dbName).C(cName)
+	err := c.Find(queryCondition).All(&ob)
+	if err != nil {
+		log.Println(err)
+	}
+	return ob
 }
