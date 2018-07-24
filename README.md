@@ -11,23 +11,23 @@ Apigateway is a api-gateway server demo written in [golang](https://golang.org/)
 
 <h2>Define</h2>
 
-<h5>Router: control all http request, and dispatch each requets to  api.
-<h5>Api: Handle all request and provide a service to Router.
-<h5>Worker: Define some task for handle request task.
+<h5>Router: control all http request, and dispatch each requets to services.
+<h5>Api: Handle all request and provide a service to router.
+<h5>Worker: Here is define some backand task/job do somthing.
 <h5>Socket: Provide a socket server.
 
-<h1>How to running?</h1>
+<h1>How to run ?</h1>
 
 <h2>Prepare step(optional)</h2>
-<pre>
-start mongo db in your localhost, and update your mongodb info in /conf/app.conf.yml.
-You also can choise mysqldb.
-</pre>
 
-<h2>Running APIGATEWAY</h2>
+>start mongo db in your localhost, and update your mongodb info in /conf/app.conf.yml.You also can select mysql.
+
+
+<h2>Start APIGATEWAY</h2>
 
 * Init workdir
 ```sh
+git clone https://github.com/nightlegend/apigateway.git
 go get github.com/kardianos/govendor
 cd $GOPATH/src/github.com/nightlegend/apigateway
 govendor init
@@ -38,19 +38,94 @@ govendor install +local
 
 * Start APIGATEWAY
 ```sh
-# -env mean you will up which environment.
+# start with default
+go run server.go
+# -env: current for enable/disable debug model.
 go run server.go -env development
 ```
 
 
 If running normally, you can access<a href="http://localhost:8080">http://localhost:8080</a>
 
+**Application details**
+
+---
+
+1. Server starting from server.go
+   ```go
+    package main
+    import (
+        "flag"
+        "os"
+        log "github.com/Sirupsen/logrus"
+        "github.com/nightlegend/apigateway/core/router"
+    )
+
+    var (
+        env = flag.String("env", "development", "running environment")
+    )
+
+    // Api server start from here. router is define your api router and public it.
+    func main() {
+        flag.Parse()
+        // set golable logs file path.
+        execDirAbsPath, _ := os.Getwd()
+        f, err := os.OpenFile(execDirAbsPath+"/logs/app.log", os.O_WRONLY|os.O_CREATE|os.O_APPEND, 0644)
+        if err != nil {
+            log.Fatal(err)
+        }
+        //defer to close when you're done with it, not because you think it's idiomatic!
+        defer f.Close()
+        //set output of logs to file
+        log.SetOutput(f)
+
+        // start api server, *env is what`s environment will running, currentlly this only for enable or disable debug modle
+        // After may be use it load different varible.
+        router.Start(*env)
+    }
+   ```
+2. Project code structure
+    | folder        | content                                   |
+    | ------------- |:-------------                             |
+    | conf          | put some application configure to here    |
+    | core          | put core sources to here                  |
+    | middleware    | put middleware code to here, like cors    |
+    | logs          | here will save console log                |
+    | vendor        | here is save third party                  |
+    | doc           | here is save some document about project  |
+
+3. Router define
+   
+   Router, It`s like your application gate, help you dispatch all request to target service.
+   >go to apigateway/core/router/router.go, you can define your router.
+
+    ```go
+    func Start(env string) {
+        // running mode switcher
+        switch env {
+        case "development":
+            gin.SetMode(gin.DebugMode)
+        default:
+            gin.SetMode(gin.ReleaseMode)
+        }
+        router := gin.New()
+        router.Use(middleware.CORSMiddleware())
+        router.Use(gin.Logger())
+        //No Permission Validation
+        public.APIRouter(router)
+        //Permission Validation
+        private.APIRouter(router)
+        router.Run(LisAddr)
+    }
+    ```
+    
+**Related project** 
+
+---
 
 If you need a [frond-end](https://github.com/nightlegend/Dashboard) template, It`s will be help you.
 
 If you need a [SOCKET-SERVER](https://github.com/nightlegend/hi), It`s can help you.
 
-If you interest grpc, I am happy to give a sample to you, [GRPC-GO](https://github.com/nightlegend/grpc-server-go), hope you love it, thanks. (development stage)
-
-<small>Keep update to here for latest changed. Thanks for you love it.</small>
+If you interest grpc, I am happy to give a sample to you, [GRPC-GO](https://github.com/nightlegend/grpc-server-go), hope you love it, thanks.
 
