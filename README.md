@@ -85,6 +85,7 @@ If running normally, you can access<a href="http://localhost:8080">http://localh
     }
    ```
 2. Project code structure
+
     | folder        | content                                   |
     | ------------- |:-------------                             |
     | conf          | put some application configure to here    |
