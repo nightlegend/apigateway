@@ -118,7 +118,59 @@ If running normally, you can access<a href="http://localhost:8080">http://localh
         router.Run(LisAddr)
     }
     ```
+4. Sample api
+   > login api: http://localhost:8080/login
+
+   ```text
+    request:
+
+    POST /login HTTP/1.1
+    Host: localhost:8080
+    Content-Type: application/json
+    Cache-Control: no-cache
+    Postman-Token: a70f71a7-72b9-4106-9bcd-fd2b65be1e87
+
+    {
+        "userName": "demouser02",
+        "password": "Password1"
+    }
     
+    response:
+    {
+        "Message": "Login Successful",
+        "code": 200,
+        "tooken": ""
+    }
+   ```
+   >router code implement
+   ```go
+    router.POST("/login", func(c *gin.Context) {
+        c.BindJSON(&uis)
+        session := sessions.Default(c)
+        v := session.Get(uis.USERNAME)
+        if v == nil {
+            flag = uis.Login()
+            session.Set(uis.USERNAME, uis.USERNAME)
+            session.Save()
+            log.Println("Try login and save session in session store.")
+        } else {
+            flag = consts.SUCCESS
+            log.Println("Have a session in session store.")
+        }
+
+        switch flag {
+        case consts.SUCCESS:
+            c.JSON(http.StatusOK, gin.H{"code": consts.SUCCESS, "Message": "Login Successful", "tooken": ""})
+        case consts.NOACCOUNT:
+            c.JSON(http.StatusOK, gin.H{"code": consts.NOACCOUNT, "Message": "Not found your account"})
+        case consts.SYSERROR:
+            c.JSON(http.StatusOK, gin.H{"code": consts.SYSERROR, "Message": "System error!!!"})
+        case consts.WRONGPASSWD:
+            c.JSON(http.StatusOK, gin.H{"code": consts.WRONGPASSWD, "Message": "Wrong password..."})
+        }
+    })
+   ```
+
 **Related project** 
 
 ---
