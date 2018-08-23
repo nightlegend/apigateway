@@ -21,12 +21,15 @@ func NewMongoHelper() MongoHelper {
 
 // Insert insert one record in db
 func (mongoHelper MongoHelper) Insert(cName string, ob interface{}) bool {
-	session, dbName := mongoDB.Connectmon()
+	session, dbName, err := mongoDB.Connectmon()
 	defer session.Close()
+	if err != nil {
+		return false
+	}
 	c := session.DB(dbName).C(cName)
 	// Optional. Switch the session to a monotonic behavior.
 	session.SetMode(mgo.Monotonic, true)
-	err := c.Insert(ob)
+	err = c.Insert(ob)
 	if err != nil {
 		log.Fatal(err)
 		return false
@@ -36,13 +39,15 @@ func (mongoHelper MongoHelper) Insert(cName string, ob interface{}) bool {
 
 // QueryOne query info by condition return one record.
 func (mongoHelper MongoHelper) QueryOne(cName string, queryCondition interface{}, ob interface{}) (result interface{}) {
-	session, dbName := mongoDB.Connectmon()
+	session, dbName, err := mongoDB.Connectmon()
 	defer session.Close()
-
+	if err != nil {
+		return nil
+	}
 	session.SetMode(mgo.Monotonic, true)
 	c := session.DB(dbName).C(cName)
 
-	err := c.Find(queryCondition).One(&ob)
+	err = c.Find(queryCondition).One(&ob)
 	if err != nil {
 		log.Println(err)
 		return consts.NOACCOUNT
@@ -56,12 +61,14 @@ func (mongoHelper MongoHelper) QueryOne(cName string, queryCondition interface{}
 // colQuerier to set the query collection condition.
 // update to set the update object.
 func (mongoHelper MongoHelper) Update(cName string, colQuerier interface{}, update interface{}) bool {
-	session, dbName := mongoDB.Connectmon()
+	session, dbName, err := mongoDB.Connectmon()
 	defer session.Close()
-
+	if err != nil {
+		return false
+	}
 	session.SetMode(mgo.Monotonic, true)
 	c := session.DB(dbName).C(cName)
-	if err := c.Update(colQuerier, update); err != nil {
+	if err = c.Update(colQuerier, update); err != nil {
 		log.Println(err)
 		return false
 	}
@@ -70,12 +77,14 @@ func (mongoHelper MongoHelper) Update(cName string, colQuerier interface{}, upda
 
 // QueryAll is query all record by condition, return a interface.
 func (mongoHelper MongoHelper) QueryAll(cName string, queryCondition interface{}, ob []interface{}) (result []interface{}) {
-	session, dbName := mongoDB.Connectmon()
+	session, dbName, err := mongoDB.Connectmon()
 	defer session.Close()
-
+	if err != nil {
+		return nil
+	}
 	session.SetMode(mgo.Monotonic, true)
 	c := session.DB(dbName).C(cName)
-	err := c.Find(queryCondition).All(&ob)
+	err = c.Find(queryCondition).All(&ob)
 	if err != nil {
 		log.Println(err)
 	}

@@ -17,7 +17,7 @@ type MongoDB struct {
 }
 
 // Connectmon connect mongo db.
-func (db MongoDB) Connectmon() (*mgo.Session, string) {
+func (db MongoDB) Connectmon() (*mgo.Session, string, error) {
 	execDirAbsPath, _ := os.Getwd()
 	data, err := ioutil.ReadFile(execDirAbsPath + "/conf/app.conf.yml")
 	if err != nil {
@@ -29,7 +29,9 @@ func (db MongoDB) Connectmon() (*mgo.Session, string) {
 	}
 	session, err := mgo.Dial("mongodb://" + db.Mongohost + ":" + db.Mongoport)
 	if err != nil {
-		panic(err)
+		// panic(err)
+		log.Errorln(err)
+		return nil, "", err
 	}
-	return session, db.DBName
+	return session, db.DBName, err
 }
