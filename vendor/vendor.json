@@ -241,10 +241,10 @@
 			"revisionTime": "2017-10-30T08:58:20Z"
 		},
 		{
-			"checksumSHA1": "ZrBlc4nW5joRSLLRThHlxU+bWtg=",
+			"checksumSHA1": "+UgLC+h5OGeymvpZEIYnDCFWctA=",
 			"path": "github.com/gin-gonic/gin/json",
-			"revision": "b869fe1415e4b9eb52f247441830d502aece2d4d",
-			"revisionTime": "2018-08-14T08:58:52Z",
+			"revision": "79478c0e805b7757f0e69390b72707f14373343b",
+			"revisionTime": "2017-10-30T08:58:20Z",
 			"version": "v1.3",
 			"versionExact": "v1.3.0"
 		},
@@ -409,6 +409,102 @@
 			"path": "github.com/modern-go/reflect2",
 			"revision": "94122c33edd36123c84d5368cfb2b69df93a0ec8",
 			"revisionTime": "2018-07-18T01:23:57Z"
+		},
+		{
+			"checksumSHA1": "1vV+foRa3T6h5pXhNeewl1nax50=",
+			"path": "github.com/nightlegend/apigateway",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "MRPj22QIhFDkVhJxCfrsFIP6sYU=",
+			"path": "github.com/nightlegend/apigateway/conf",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "R71SGocZsWcf6txWpqQNKnT4MmI=",
+			"path": "github.com/nightlegend/apigateway/core/api/docker",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "y2lwRK/2mpR898XB5Ql/aDODmow=",
+			"path": "github.com/nightlegend/apigateway/core/api/etcd",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "f4ri0zTu1/wr3lgDOTgcmHCQEYw=",
+			"path": "github.com/nightlegend/apigateway/core/api/users",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "Cyg+Ba/p61yzs3g/L8wR8mNroKg=",
+			"path": "github.com/nightlegend/apigateway/core/cache",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "bkAA1yPqyvlCAB7auyZv/7I7wdY=",
+			"path": "github.com/nightlegend/apigateway/core/router",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "0nuWAt4YRpLih4PvmiS2ELLjlUs=",
+			"path": "github.com/nightlegend/apigateway/core/router/private",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "5Mikig7aeBcVQTXuS0HsyXR0skg=",
+			"path": "github.com/nightlegend/apigateway/core/router/public",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "NbLJYWs/qdtVPq6sX9JrXHvmV4U=",
+			"path": "github.com/nightlegend/apigateway/core/socketio",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "aHm6v7oyCNU6UHxGn/nBMH4UMHM=",
+			"path": "github.com/nightlegend/apigateway/core/utils",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "KugnEvm8hhpzWdt3/+gvhtMe/vc=",
+			"path": "github.com/nightlegend/apigateway/core/utils/consts",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "C0KaJ8wERxW1MPdNnSMYedhbC1E=",
+			"path": "github.com/nightlegend/apigateway/core/utils/db",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "xV1fLEAK45IJd85CMvzKVcYEKq0=",
+			"path": "github.com/nightlegend/apigateway/core/utils/etcd",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "EWWTiCiLeeAu43tVOuqiUjYYIcc=",
+			"path": "github.com/nightlegend/apigateway/core/utils/redis",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "IKS1qkG0HHGxTCh5Z6U0ajKQ3Rc=",
+			"path": "github.com/nightlegend/apigateway/middleware",
+			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
+			"revisionTime": "2018-08-23T05:32:45Z"
 		},
 		{
 			"checksumSHA1": "y3Sfh9gZaVHMNPDqB0g/IqxeTwg=",

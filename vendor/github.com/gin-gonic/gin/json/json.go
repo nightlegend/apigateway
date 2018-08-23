@@ -6,7 +6,9 @@
 
 package json
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 var (
 	Marshal       = json.Marshal
