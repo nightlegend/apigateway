@@ -33,7 +33,7 @@ func APIRouter(router *gin.Engine) {
 		c.JSON(http.StatusOK, gin.H{"message": "welcome to apigateway, you can find you want here!!!", "userInfo": "Hello World!!!"})
 	})
 
-	router.POST("/login", func(c *gin.Context) {
+	router.POST("/api/users/login", func(c *gin.Context) {
 		c.BindJSON(&uis)
 		/*
 			// TO-DO: cache user login session.
@@ -61,7 +61,7 @@ func APIRouter(router *gin.Engine) {
 		}
 	})
 
-	router.POST("/register", func(c *gin.Context) {
+	router.POST("/api/users/register", func(c *gin.Context) {
 		c.BindJSON(&uis)
 		if uis.Register() {
 			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Welcome " + uis.USERNAME + ",you have login successful!"})
@@ -70,7 +70,7 @@ func APIRouter(router *gin.Engine) {
 		}
 	})
 
-	router.POST("/update", func(c *gin.Context) {
+	router.POST("/api/users/update", func(c *gin.Context) {
 		c.BindJSON(&uis)
 		if uis.UpdateUserInfo() {
 			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": uis.USERNAME + ",you have update information successfully!"})
@@ -79,18 +79,18 @@ func APIRouter(router *gin.Engine) {
 		}
 	})
 
-	router.GET("/queryAll", func(c *gin.Context) {
+	router.GET("/api/users/queryAll", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Query done, check console", "userList": uis.QueryAllAccountInfo()})
 	})
 
-	router.GET("/getImageTagInfo", func(c *gin.Context) {
+	router.GET("/api/docker/getImageTagInfo", func(c *gin.Context) {
 		imageName := c.DefaultQuery("imageType", "") + "/" + c.DefaultQuery("imageName", "")
 		imageTag := c.DefaultQuery("imageTag", "")
 		str := docker.GetImageTagInfo(imageName, imageTag)
 		c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "imageTagList": string(str)})
 	})
 
-	router.GET("/getImageAllTags", func(c *gin.Context) {
+	router.GET("/api/docker/getImageAllTags", func(c *gin.Context) {
 		// get user, it was set by the BasicAuth middleware
 		imageName := c.DefaultQuery("imageName", "")
 		str := docker.GetAllTagByImageName(imageName)
