@@ -174,6 +174,68 @@ If running normally, you can access<a href="http://localhost:8080">http://localh
 	})
    ```
 
+**CMD**
+
+>Add command tools for download template code file, later may be add new feature to here.
+---
+
+1. Build runnable file on your OS.
+   ```sh
+   cd apigateway/cmd
+   go build gga.go
+   ```
+2. Usage about gga.
+   > when you build complete, you can run excuteable file in command line tools:
+   ```sh
+   > gga
+    A cool tools about init a project, It is can help you do some base thing
+    Usage:
+    gga [command]
+
+    Available Commands:
+    clone       clone sample code to your path.
+    help        Help about any command
+
+    Flags:
+    -h, --help   help for gga
+
+    Use "gga [command] --help" for more information about a command.
+
+    > gga clone demo
+
+   ```
+
+3. CMD Implements.
+   > go get "github.com/spf13/cobra"
+   ```go
+    // **key code**
+    // newCmd is new commmand tools. And define all sub-command.
+    func (n *newProject) newCmd() *cobra.Command {
+        // root command
+        cmd := &cobra.Command{
+            Use:   "gga [command]",
+            Short: "A very helpful command line tools about apigateway",
+            Long:  `A cool tools about init a project, It is can help you do some base thing`,
+        }
+        // gga new [path+filename]
+        cmdNewProject := &cobra.Command{
+            Use:   "clone [path+filename]",
+            Short: "clone sample code to your path.",
+            Long:  `Create a new content file. It will guess which kind of file to create based on the path provided.`,
+            RunE:  n.downloadFile,
+        }
+        // add sub-command to root command
+        cmd.AddCommand(cmdNewProject)
+        return cmd
+    }
+
+    func main() {
+	    n := &newProject{}
+	    n.newCmd().Execute()
+    }
+   ```
+
+
 **Related project** 
 
 ---
