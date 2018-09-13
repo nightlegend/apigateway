@@ -4,3 +4,4 @@ apigateway
 *.exe
 *.out
 debug
+.vscode/launch.json
