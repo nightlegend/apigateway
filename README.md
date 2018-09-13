@@ -88,6 +88,7 @@ If running normally, you can access<a href="http://localhost:8080">http://localh
 
     | folder        | content                                   |
     | ------------- |:-------------                             |
+    | cmd           | command-line tool                         |
     | conf          | put some application configure to here    |
     | core          | put core sources to here                  |
     | middleware    | put middleware code to here, like cors    |
