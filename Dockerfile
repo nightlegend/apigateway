@@ -1,10 +1,11 @@
-FROM golang:1.10
+# FROM golang:1.10
+FROM grpc-go:latest
 
-MAINTAINER David Guo
+LABEL maintainer="David Guo"
 
-WORKDIR /go/src/apigateway/
+WORKDIR /go/src/github.com/nightlegend/apigateway/
 
-COPY ./ /go/src/apigateway/
+COPY ./ /go/src/github.com/nightlegend/apigateway/
 
 RUN go get && \
     go build
@@ -12,3 +13,6 @@ RUN go get && \
 EXPOSE 8080
 
 CMD ["go", "run server.go"]
+
+
+# docker run -it -v D:\opensource\golangspace\src\github.com\nightlegend\apigateway:/go/src/github.com/nightlegend/apigateway apigateway:gencode /bin/bash

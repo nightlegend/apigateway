@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	log "github.com/Sirupsen/logrus"
+	mygrpc "github.com/nightlegend/apigateway/core/grpc"
+	pb "github.com/nightlegend/apigateway/core/grpc/services"
 
 	"github.com/gin-gonic/gin"
 	"github.com/nightlegend/apigateway/core/api/docker"
@@ -96,6 +98,17 @@ func APIRouter(router *gin.Engine) {
 		str := docker.GetAllTagByImageName(imageName)
 		c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "imageTagList": string(str)})
 
+	})
+
+	// export a api for call grpc methods
+	router.GET("/api/grpc/demo", func(c *gin.Context) {
+		conn, client, err := mygrpc.APIClient()
+		defer conn.Close()
+		if err != nil {
+			c.JSON(http.StatusOK, gin.H{"message": err})
+		}
+		resp := mygrpc.Testing(client, &pb.Request{Id: 1, Msg: "grpc call testinng"})
+		c.JSON(http.StatusOK, gin.H{"resp": resp})
 	})
 
 	log.Info("complete init public router.......")
