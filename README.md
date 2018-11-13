@@ -7,7 +7,7 @@ Apigateway is a api-gateway server demo written in [golang](https://golang.org/)
 
 <h1>Design</h1>
 
-![Gopher image](doc/structure.jpg)
+![Gopher image](doc/apigateway.png)
 
 <h2>Define</h2>
 
