@@ -23,7 +23,7 @@ func init() {
 
 // Start start application by load self-define router.
 func Start(env string) {
-	// running mode switcher
+	// enable debug/release mode
 	switch env {
 	case "development":
 		gin.SetMode(gin.DebugMode)

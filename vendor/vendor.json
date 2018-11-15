@@ -67,6 +67,12 @@
 			"revisionTime": "2016-11-16T04:05:26Z"
 		},
 		{
+			"checksumSHA1": "V31AmY5VL2fC9sn6FMoCe+a0Qkk=",
+			"path": "github.com/docker/docker/api",
+			"revision": "758255791e25767aeeb5b2509e2d54f9ec91b242",
+			"revisionTime": "2018-11-13T08:55:51Z"
+		},
+		{
 			"checksumSHA1": "VSBOqTBDCrHvxxua3l3ikmkYzYc=",
 			"path": "github.com/docker/docker/api/types",
 			"revision": "6697fa8a68db41162063df90f54f8b039d4ca4a1",
@@ -95,6 +101,12 @@
 			"path": "github.com/docker/docker/api/types/filters",
 			"revision": "6697fa8a68db41162063df90f54f8b039d4ca4a1",
 			"revisionTime": "2016-11-16T04:05:26Z"
+		},
+		{
+			"checksumSHA1": "bC0/3Y3RxjO8iZ+pj8E7XLY89MI=",
+			"path": "github.com/docker/docker/api/types/image",
+			"revision": "758255791e25767aeeb5b2509e2d54f9ec91b242",
+			"revisionTime": "2018-11-13T08:55:51Z"
 		},
 		{
 			"checksumSHA1": "D2rWT07iIxdfDh7pouzxH2es9Sw=",
@@ -151,10 +163,10 @@
 			"revisionTime": "2016-11-16T04:05:26Z"
 		},
 		{
-			"checksumSHA1": "gQ1anzvKvfjtnRDfLPn7/6iHfmA=",
+			"checksumSHA1": "1jeO8dNT1GqEnsy8paBd1ss1Nbo=",
 			"path": "github.com/docker/docker/client",
-			"revision": "6697fa8a68db41162063df90f54f8b039d4ca4a1",
-			"revisionTime": "2016-11-16T04:05:26Z"
+			"revision": "758255791e25767aeeb5b2509e2d54f9ec91b242",
+			"revisionTime": "2018-11-13T08:55:51Z"
 		},
 		{
 			"checksumSHA1": "t04WnJ2QukyvpgAG78jV+yCgYlU=",
@@ -509,6 +521,12 @@
 			"path": "github.com/nightlegend/apigateway/middleware",
 			"revision": "4f9b1beae90b5565e284e87a9b36ebbfa9d360d3",
 			"revisionTime": "2018-08-23T05:32:45Z"
+		},
+		{
+			"checksumSHA1": "K995CGj2IIPqnMu3/tDED0C08O0=",
+			"path": "github.com/opencontainers/go-digest",
+			"revision": "c9281466c8b2f606084ac71339773efd177436e7",
+			"revisionTime": "2018-04-30T19:00:53Z"
 		},
 		{
 			"checksumSHA1": "y3Sfh9gZaVHMNPDqB0g/IqxeTwg=",

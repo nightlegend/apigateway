@@ -1,12 +1,13 @@
-package client
+package client // import "github.com/docker/docker/client"
 
 import (
+	"context"
 	"encoding/json"
 	"net/url"
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/filters"
-	"golang.org/x/net/context"
+	"github.com/docker/docker/api/types/versions"
 )
 
 // ImageList returns a list of images in the docker host.
@@ -14,8 +15,16 @@ func (cli *Client) ImageList(ctx context.Context, options types.ImageListOptions
 	var images []types.ImageSummary
 	query := url.Values{}
 
-	if options.Filters.Len() > 0 {
-		filterJSON, err := filters.ToParamWithVersion(cli.version, options.Filters)
+	optionFilters := options.Filters
+	referenceFilters := optionFilters.Get("reference")
+	if versions.LessThan(cli.version, "1.25") && len(referenceFilters) > 0 {
+		query.Set("filter", referenceFilters[0])
+		for _, filterValue := range referenceFilters {
+			optionFilters.Del("reference", filterValue)
+		}
+	}
+	if optionFilters.Len() > 0 {
+		filterJSON, err := filters.ToParamWithVersion(cli.version, optionFilters)
 		if err != nil {
 			return images, err
 		}

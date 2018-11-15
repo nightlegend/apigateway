@@ -1,11 +1,10 @@
-package client
+package client // import "github.com/docker/docker/client"
 
 import (
+	"context"
 	"encoding/json"
 	"net/url"
 	"time"
-
-	"golang.org/x/net/context"
 
 	"github.com/docker/docker/api/types"
 	"github.com/docker/docker/api/types/events"
@@ -22,17 +21,20 @@ func (cli *Client) Events(ctx context.Context, options types.EventsOptions) (<-c
 	messages := make(chan events.Message)
 	errs := make(chan error, 1)
 
+	started := make(chan struct{})
 	go func() {
 		defer close(errs)
 
 		query, err := buildEventsQueryParams(cli.version, options)
 		if err != nil {
+			close(started)
 			errs <- err
 			return
 		}
 
 		resp, err := cli.get(ctx, "/events", query, nil)
 		if err != nil {
+			close(started)
 			errs <- err
 			return
 		}
@@ -40,6 +42,7 @@ func (cli *Client) Events(ctx context.Context, options types.EventsOptions) (<-c
 
 		decoder := json.NewDecoder(resp.body)
 
+		close(started)
 		for {
 			select {
 			case <-ctx.Done():
@@ -61,6 +64,7 @@ func (cli *Client) Events(ctx context.Context, options types.EventsOptions) (<-c
 			}
 		}
 	}()
+	<-started
 
 	return messages, errs
 }

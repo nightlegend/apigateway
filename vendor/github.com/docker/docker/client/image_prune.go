@@ -1,22 +1,28 @@
-package client
+package client // import "github.com/docker/docker/client"
 
 import (
+	"context"
 	"encoding/json"
 	"fmt"
 
 	"github.com/docker/docker/api/types"
-	"golang.org/x/net/context"
+	"github.com/docker/docker/api/types/filters"
 )
 
 // ImagesPrune requests the daemon to delete unused data
-func (cli *Client) ImagesPrune(ctx context.Context, cfg types.ImagesPruneConfig) (types.ImagesPruneReport, error) {
+func (cli *Client) ImagesPrune(ctx context.Context, pruneFilters filters.Args) (types.ImagesPruneReport, error) {
 	var report types.ImagesPruneReport
 
 	if err := cli.NewVersionError("1.25", "image prune"); err != nil {
 		return report, err
 	}
 
-	serverResp, err := cli.post(ctx, "/images/prune", nil, cfg, nil)
+	query, err := getFiltersQuery(pruneFilters)
+	if err != nil {
+		return report, err
+	}
+
+	serverResp, err := cli.post(ctx, "/images/prune", query, nil, nil)
 	if err != nil {
 		return report, err
 	}
