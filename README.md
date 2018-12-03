@@ -9,13 +9,6 @@ Apigateway is a api-gateway server demo written in [golang](https://golang.org/)
 
 ![Gopher image](doc/apigateway.png)
 
-<h2>Define</h2>
-
-<h5>Router: control all http request, and dispatch each requets to services.
-<h5>Api: Handle all request and provide a service to router.
-<h5>Worker: Here is define some backand task/job do somthing.
-<h5>Socket: Provide a socket server.
-
 <h1>How to run ?</h1>
 
 <h2>Prepare step(optional)</h2>
