@@ -30,9 +30,11 @@ func Start(env string) {
 	default:
 		gin.SetMode(gin.ReleaseMode)
 	}
+
 	router := gin.New()
-	router.Use(middleware.CORSMiddleware())
 	router.Use(gin.Logger())
+	router.Use(gin.Recovery())
+	router.Use(middleware.CORSMiddleware())
 	//No Permission Validation
 	public.APIRouter(router)
 	//Permission Validation

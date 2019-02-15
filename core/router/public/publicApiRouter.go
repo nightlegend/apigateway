@@ -6,9 +6,9 @@ import (
 	log "github.com/Sirupsen/logrus"
 	mygrpc "github.com/nightlegend/apigateway/core/grpc"
 	pb "github.com/nightlegend/apigateway/core/grpc/services"
+	ws "github.com/nightlegend/apigateway/core/socketio"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nightlegend/apigateway/core/api/docker"
 	"github.com/nightlegend/apigateway/core/api/users"
 	"github.com/nightlegend/apigateway/core/utils/consts"
 )
@@ -85,21 +85,6 @@ func APIRouter(router *gin.Engine) {
 		c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Query done, check console", "userList": uis.QueryAllAccountInfo()})
 	})
 
-	router.GET("/api/docker/getImageTagInfo", func(c *gin.Context) {
-		imageName := c.DefaultQuery("imageType", "") + "/" + c.DefaultQuery("imageName", "")
-		imageTag := c.DefaultQuery("imageTag", "")
-		str := docker.GetImageTagInfo(imageName, imageTag)
-		c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "imageTagList": string(str)})
-	})
-
-	router.GET("/api/docker/getImageAllTags", func(c *gin.Context) {
-		// get user, it was set by the BasicAuth middleware
-		imageName := c.DefaultQuery("imageName", "")
-		str := docker.GetAllTagByImageName(imageName)
-		c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "imageTagList": string(str)})
-
-	})
-
 	// export a api for call grpc methods
 	router.GET("/api/grpc/demo", func(c *gin.Context) {
 		conn, client, err := mygrpc.APIClient()
@@ -111,5 +96,11 @@ func APIRouter(router *gin.Engine) {
 		c.JSON(http.StatusOK, gin.H{"resp": resp})
 	})
 
+	// web socket expose
+	router.GET("/ws", func(c *gin.Context) {
+		ws.WShandler(c.Writer, c.Request)
+	})
+
 	log.Info("complete init public router.......")
+
 }
