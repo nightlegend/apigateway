@@ -21,7 +21,7 @@ func init() {
 	}
 }
 
-// Start start application by load self-define router.
+// Start application by load self-define router.
 func Start(env string) {
 	// enable debug/release mode
 	switch env {
