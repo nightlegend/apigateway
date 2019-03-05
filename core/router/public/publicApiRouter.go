@@ -60,12 +60,14 @@ func APIRouter(router *gin.Engine) {
 			c.JSON(http.StatusOK, gin.H{"code": consts.SYSERROR, "Message": "System error!!!"})
 		case consts.WRONGPASSWD:
 			c.JSON(http.StatusOK, gin.H{"code": consts.WRONGPASSWD, "Message": "Wrong password..."})
+		default:
+			c.JSON(http.StatusOK, gin.H{"code": consts.SYSERROR, "Message": "Unknow error.."})
 		}
 	})
 
 	router.POST("/api/users/register", func(c *gin.Context) {
 		c.BindJSON(&uis)
-		if uis.Register() {
+		if err := uis.Register(); err == nil {
 			c.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "message": "Welcome " + uis.USERNAME + ",you have login successful!"})
 		} else {
 			c.JSON(http.StatusExpectationFailed, gin.H{"errorMessage": "Rigster failed "})

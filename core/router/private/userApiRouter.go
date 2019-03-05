@@ -10,7 +10,7 @@ import (
 
 var secrets = gin.H{
 	"golang": gin.H{"email": "golang@golang.com", "phone": "123433"},
-	"admin":  gin.H{"email": "lose.start.david.guo@gmail.com", "phone": "13798972142", "status": "successful"},
+	"admin":  gin.H{"email": "lose.start.david.guo@gmail.com", "phone": "1111111111", "status": "successful"},
 }
 
 // APIRouter : define a private router.
