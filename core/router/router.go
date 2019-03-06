@@ -1,6 +1,7 @@
 package router
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -29,6 +30,7 @@ func Start(env string) {
 		gin.SetMode(gin.DebugMode)
 	default:
 		gin.SetMode(gin.ReleaseMode)
+		fmt.Printf("Start prod mode...\nServer listen on: %v", LisAddr)
 	}
 
 	router := gin.New()
