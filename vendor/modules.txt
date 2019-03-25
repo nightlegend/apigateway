@@ -1,0 +1,132 @@
+# github.com/Sirupsen/logrus v0.0.0-20161111120951-abc6f20dabf4
+github.com/Sirupsen/logrus
+# github.com/boj/redistore v0.0.0-20160128113310-fc113767cd6b
+github.com/boj/redistore
+# github.com/coreos/etcd v0.0.0-20170403004131-38a914973544
+github.com/coreos/etcd/client
+github.com/coreos/etcd/pkg/pathutil
+github.com/coreos/etcd/pkg/types
+github.com/coreos/etcd/version
+# github.com/coreos/go-semver v0.0.0-20170209201757-5e3acbb5668c
+github.com/coreos/go-semver/semver
+# github.com/garyburd/redigo v0.0.0-20161024014702-80f7de34463b
+github.com/garyburd/redigo/redis
+github.com/garyburd/redigo/internal
+# github.com/gin-contrib/sessions v0.0.0-20180702031852-da25b7bed527
+github.com/gin-contrib/sessions
+github.com/gin-contrib/sessions/redis
+# github.com/gin-contrib/sse v0.0.0-20170109093832-22d885f9ecc7
+github.com/gin-contrib/sse
+# github.com/gin-gonic/gin v1.3.0
+github.com/gin-gonic/gin
+github.com/gin-gonic/gin/binding
+github.com/gin-gonic/gin/json
+github.com/gin-gonic/gin/render
+# github.com/go-redis/redis v6.10.2+incompatible
+github.com/go-redis/redis
+github.com/go-redis/redis/internal
+github.com/go-redis/redis/internal/consistenthash
+github.com/go-redis/redis/internal/hashtag
+github.com/go-redis/redis/internal/pool
+github.com/go-redis/redis/internal/proto
+github.com/go-redis/redis/internal/singleflight
+github.com/go-redis/redis/internal/util
+# github.com/golang/protobuf v1.1.0
+github.com/golang/protobuf/proto
+github.com/golang/protobuf/ptypes
+github.com/golang/protobuf/ptypes/any
+github.com/golang/protobuf/ptypes/duration
+github.com/golang/protobuf/ptypes/timestamp
+# github.com/googollee/go-engine.io v0.0.0-20170224222511-80ae0e43aca1
+github.com/googollee/go-engine.io
+github.com/googollee/go-engine.io/message
+github.com/googollee/go-engine.io/parser
+github.com/googollee/go-engine.io/polling
+github.com/googollee/go-engine.io/transport
+github.com/googollee/go-engine.io/websocket
+# github.com/googollee/go-socket.io v0.0.0-20170525141029-5447e71f36d3
+github.com/googollee/go-socket.io
+# github.com/gorilla/context v1.1.1
+github.com/gorilla/context
+# github.com/gorilla/securecookie v0.0.0-20161003051601-fa5329f91370
+github.com/gorilla/securecookie
+# github.com/gorilla/sessions v0.0.0-20160922145804-ca9ada445741
+github.com/gorilla/sessions
+# github.com/gorilla/websocket v0.0.0-20170718202341-a69d9f6de432
+github.com/gorilla/websocket
+# github.com/inconshreveable/mousetrap v1.0.0
+github.com/inconshreveable/mousetrap
+# github.com/json-iterator/go v1.1.5
+github.com/json-iterator/go
+# github.com/mattn/go-isatty v0.0.4
+github.com/mattn/go-isatty
+# github.com/mitchellh/mapstructure v0.0.0-20180111000720-b4575eea38cc
+github.com/mitchellh/mapstructure
+# github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
+github.com/modern-go/concurrent
+# github.com/modern-go/reflect2 v1.0.1
+github.com/modern-go/reflect2
+# github.com/spf13/cobra v0.0.0-20180124073143-f91529fc6092
+github.com/spf13/cobra
+# github.com/spf13/jwalterweatherman v0.0.0-20180109140146-7c0cea34c8ec
+github.com/spf13/jwalterweatherman
+# github.com/spf13/pflag v0.0.0-20171106142849-4c012f6dcd95
+github.com/spf13/pflag
+# github.com/ugorji/go v0.0.0-20170312112114-708a42d24682
+github.com/ugorji/go/codec
+# golang.org/x/net v0.0.0-20180420171651-5f9ae10d9af5
+golang.org/x/net/context
+golang.org/x/net/http2
+golang.org/x/net/trace
+golang.org/x/net/http/httpguts
+golang.org/x/net/http2/hpack
+golang.org/x/net/idna
+golang.org/x/net/lex/httplex
+golang.org/x/net/internal/timeseries
+# golang.org/x/sys v0.0.0-20190322080309-f49334f85ddc
+golang.org/x/sys/unix
+# golang.org/x/text v0.0.0-20180410181320-7922cc490dd5
+golang.org/x/text/secure/bidirule
+golang.org/x/text/unicode/bidi
+golang.org/x/text/unicode/norm
+golang.org/x/text/transform
+# google.golang.org/genproto v0.0.0-20181004005441-af9cb2a35e7f
+google.golang.org/genproto/googleapis/rpc/status
+# google.golang.org/grpc v0.0.0-20180420001721-4172bfc25e1c
+google.golang.org/grpc
+google.golang.org/grpc/balancer
+google.golang.org/grpc/balancer/roundrobin
+google.golang.org/grpc/channelz
+google.golang.org/grpc/codes
+google.golang.org/grpc/connectivity
+google.golang.org/grpc/credentials
+google.golang.org/grpc/encoding
+google.golang.org/grpc/encoding/proto
+google.golang.org/grpc/grpclb/grpc_lb_v1/messages
+google.golang.org/grpc/grpclog
+google.golang.org/grpc/internal
+google.golang.org/grpc/keepalive
+google.golang.org/grpc/metadata
+google.golang.org/grpc/naming
+google.golang.org/grpc/peer
+google.golang.org/grpc/resolver
+google.golang.org/grpc/resolver/dns
+google.golang.org/grpc/resolver/passthrough
+google.golang.org/grpc/stats
+google.golang.org/grpc/status
+google.golang.org/grpc/tap
+google.golang.org/grpc/transport
+google.golang.org/grpc/balancer/base
+# gopkg.in/go-playground/validator.v8 v8.18.2
+gopkg.in/go-playground/validator.v8
+# gopkg.in/mgo.v2 v2.0.0-20160818020120-3f83fa500528
+gopkg.in/mgo.v2/bson
+gopkg.in/mgo.v2
+gopkg.in/mgo.v2/internal/json
+gopkg.in/mgo.v2/internal/sasl
+gopkg.in/mgo.v2/internal/scram
+gopkg.in/mgo.v2/dbtest
+# gopkg.in/tomb.v2 v2.0.0-20161208151619-d5d1b5820637
+gopkg.in/tomb.v2
+# gopkg.in/yaml.v2 v2.0.0
+gopkg.in/yaml.v2
