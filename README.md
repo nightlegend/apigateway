@@ -23,11 +23,9 @@ Apigateway is a api-gateway server demo written in [golang](https://golang.org/)
 git clone https://github.com/nightlegend/apigateway.git
 go get github.com/kardianos/govendor
 cd $GOPATH/src/github.com/nightlegend/apigateway
-govendor init
-govendor add +external
-govendor install +local
+export GO111MODULE=on
+go get
 ```
-> if can`t recognize govendor, please try $GOPATH/bin/govendor.
 
 * Start APIGATEWAY
 ```sh
