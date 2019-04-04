@@ -1,8 +1,8 @@
 package middleware
 
 import (
-	log "github.com/Sirupsen/logrus"
 	"github.com/gin-gonic/gin"
+	log "github.com/sirupsen/logrus"
 )
 
 // CORSMiddleware injects CORS headers to each request

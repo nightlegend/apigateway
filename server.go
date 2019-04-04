@@ -8,9 +8,9 @@ import (
 
 	mgrpc "github.com/nightlegend/apigateway/core/grpc"
 
-	log "github.com/Sirupsen/logrus"
 	pb "github.com/nightlegend/apigateway/core/grpc/services"
 	"github.com/nightlegend/apigateway/core/router"
+	log "github.com/sirupsen/logrus"
 	"google.golang.org/grpc"
 )
 

@@ -4,7 +4,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 	"gopkg.in/mgo.v2"
 	"gopkg.in/yaml.v2"
 )

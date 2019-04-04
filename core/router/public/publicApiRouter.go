@@ -3,10 +3,10 @@ package public
 import (
 	"net/http"
 
-	log "github.com/Sirupsen/logrus"
 	mygrpc "github.com/nightlegend/apigateway/core/grpc"
 	pb "github.com/nightlegend/apigateway/core/grpc/services"
 	ws "github.com/nightlegend/apigateway/core/socketio"
+	log "github.com/sirupsen/logrus"
 
 	"github.com/gin-gonic/gin"
 	"github.com/nightlegend/apigateway/core/api/users"

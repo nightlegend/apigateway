@@ -3,8 +3,8 @@ package etcd
 import (
 	"time"
 
-	log "github.com/Sirupsen/logrus"
 	"github.com/coreos/etcd/client"
+	log "github.com/sirupsen/logrus"
 )
 
 // Conn :

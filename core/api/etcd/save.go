@@ -1,8 +1,8 @@
 package etcd
 
 import (
-	log "github.com/Sirupsen/logrus"
 	"github.com/nightlegend/apigateway/core/utils/etcd"
+	log "github.com/sirupsen/logrus"
 	"golang.org/x/net/context"
 )
 

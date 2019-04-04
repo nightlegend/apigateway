@@ -1,8 +1,8 @@
 package cache
 
 import (
-	log "github.com/Sirupsen/logrus"
 	"github.com/nightlegend/apigateway/core/utils/redis"
+	log "github.com/sirupsen/logrus"
 )
 
 // SaveLoginSession : save login session here.

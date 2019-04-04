@@ -50,7 +50,7 @@ If running normally, you can access<a href="http://localhost:8080">http://localh
     import (
         "flag"
         "os"
-        log "github.com/Sirupsen/logrus"
+        log "github.com/sirupsen/logrus"
         "github.com/nightlegend/apigateway/core/router"
     )
 

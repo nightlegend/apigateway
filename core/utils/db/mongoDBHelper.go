@@ -1,8 +1,8 @@
 package db
 
 import (
-	log "github.com/Sirupsen/logrus"
 	"github.com/nightlegend/apigateway/core/utils/consts"
+	log "github.com/sirupsen/logrus"
 	"gopkg.in/mgo.v2"
 )
 
