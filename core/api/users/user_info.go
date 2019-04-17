@@ -28,7 +28,7 @@ type UserInfoService struct {
 
 // Register register one new user in db, return a boolean value to make know success or not.
 func (uis UserInfoService) Register() error {
-	sess, DBname, err := mongoDB.Connectmon()
+	sess, DBname, err := mongoDB.Conn()
 	if err != nil {
 		return err
 	}
@@ -45,7 +45,7 @@ func (uis UserInfoService) Register() error {
 // it means by the words.
 func (uis UserInfoService) Login() int {
 	var userInfo UserInfoService
-	sess, DBname, err := mongoDB.Connectmon()
+	sess, DBname, err := mongoDB.Conn()
 	if err != nil {
 		return -1
 	}
@@ -73,7 +73,7 @@ func (uis UserInfoService) Login() int {
 
 // UpdateUserInfo update user account information
 func (uis UserInfoService) UpdateUserInfo() bool {
-	sess, DBname, err := mongoDB.Connectmon()
+	sess, DBname, err := mongoDB.Conn()
 	if err != nil {
 		return false
 	}
@@ -90,7 +90,7 @@ func (uis UserInfoService) UpdateUserInfo() bool {
 // QueryAllAccountInfo query all user information, return a user list.
 func (uis UserInfoService) QueryAllAccountInfo() (usersInfo []UserInfoService) {
 	var uiss []interface{}
-	sess, DBname, err := mongoDB.Connectmon()
+	sess, DBname, err := mongoDB.Conn()
 	if err != nil {
 		return nil
 	}

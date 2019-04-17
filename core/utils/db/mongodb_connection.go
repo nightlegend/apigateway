@@ -16,8 +16,8 @@ type MongoDB struct {
 	DBName    string `json:"dbname"`
 }
 
-// Connectmon connect mongo db.
-func (db MongoDB) Connectmon() (*mgo.Session, string, error) {
+// Conn connect mongo db.
+func (db MongoDB) Conn() (*mgo.Session, string, error) {
 	execDirAbsPath, _ := os.Getwd()
 	data, err := ioutil.ReadFile(execDirAbsPath + "/conf/app.conf.yml")
 	if err != nil {
@@ -30,7 +30,6 @@ func (db MongoDB) Connectmon() (*mgo.Session, string, error) {
 	session, err := mgo.Dial("mongodb://" + db.Mongohost + ":" + db.Mongoport)
 	if err != nil {
 		// panic(err)
-		log.Errorln(err)
 		return nil, "", err
 	}
 	return session, db.DBName, err
