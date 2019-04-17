@@ -5,3 +5,4 @@ apigateway
 *.out
 debug
 .vscode/launch.json
+testdata/*
